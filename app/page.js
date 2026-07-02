@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import AutoTooltips from "./components/AutoTooltips";
 import LogoCarousel from "./components/LogoCarousel";
-import CurationAnimation from "./components/CurationAnimation";
 import ExperimenteSection from "./components/ExperimenteSection";
 import CountdownOdometer from "./components/CountdownOdometer";
 import FloatingLink from "./components/FloatingLink";
@@ -11,24 +10,24 @@ import Button from "./components/Button";
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-(--amarelo) w-full md:max-w-4xl md:mx-auto">
-            <section className="grid grid-cols-1 md:grid-cols-5 border-b border-amber-200 divide-y md:divide-y-0 md:divide-x divide-amber-200 items-end">
+        <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
+            <section className="grid grid-cols-1 md:grid-cols-5 border-b border-sun-light divide-y md:divide-y-0 md:divide-x divide-sun-light items-end">
                 <div className="p-4 h-80 flex flex-col justify-end col-span-full md:col-span-3 space-y-4">
                     <AutoTooltips />
                 </div>
 
                 <div className="col-span-full md:col-span-2">
-                    <p className="uppercase text-sm text-amber-100 px-4 py-2 font-unbounded">
+                    <p className="uppercase text-sm text-sun-lighter px-4 py-2 font-unbounded">
                         Comece por aqui
                     </p>
 
-                    <div className="text-amber-100">
-                        <div className="border-amber-200 border-t flex items-center gap-4 hover:bg-blue-600 group py-3">
+                    <div className="text-sun-lighter">
+                        <div className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3">
                             <Image
                                 src="/brand/links-amarelos-3.png"
                                 width={2000}
                                 height={2000}
-                                className="size-24 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-amber-200 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                                className="size-24 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
                                 alt="links amarelos #3"
                             />
 
@@ -47,12 +46,12 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="border-amber-200 border-t flex items-center gap-4 hover:bg-blue-600 group py-3">
+                        <div className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3">
                             <Image
                                 src="/brand/ondas-amarelas-6.png"
                                 width={2000}
                                 height={2000}
-                                className="size-24 aspect-square -rotate-3 -my-3 shrink-0 outline outline-2 outline-amber-200 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                                className="size-24 aspect-square -rotate-3 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
                                 alt="ondas amarelas #6"
                             />
                             <div className="w-full mr-3">
@@ -74,18 +73,15 @@ export default function Home() {
             </section>
 
             <div>
-                {/* <div className="text-amber-200">
+                {/* <div className="text-sun-light">
           <LogoCarousel />
         </div>*/}
-                <div className="hidden">
-                    <CurationAnimation />
-                </div>
 
                 <ExperimenteSection />
 
                 <section
                     id="apoie"
-                    className="grid grid-cols-1 md:grid-cols-2 border-y border-amber-200 divide-y md:divide-y-0 md:divide-x divide-amber-200"
+                    className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x divide-sun-light"
                 >
                     <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-[url('/bg-texture-cutting-pad.svg')] bg-cover">
                         <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
@@ -108,7 +104,7 @@ export default function Home() {
                         </Button>
                     </div>
 
-                    <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-blue-500 text-white">
+                    <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-code text-white">
                         <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
                             Apoie
                         </p>
@@ -134,8 +130,8 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="grid grid-cols-1 md:grid-cols-2 border-y border-amber-200 divide-y md:divide-y-0 md:divide-x-2 divide-amber-200">
-                    <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-amber-200">
+                <section className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x-2 divide-sun-light">
+                    <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-sun-light">
                         <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
                             última edição
                         </p>
@@ -155,19 +151,19 @@ export default function Home() {
                                 amém
                             </p>
                         </div>
-                        <div className="flex w-full justify-center border-y border-amber-200">
+                        <div className="flex w-full justify-center border-y border-sun-light">
                             <Image
                                 src="/brand/links-amarelos-8.png"
                                 width={2000}
                                 height={2000}
-                                className="size-30 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-amber-200 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                                className="size-30 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
                                 alt="links amarelos #3"
                             />
                             <Image
                                 src="/brand/ondas-amarelas-8.png"
                                 width={2000}
                                 height={2000}
-                                className="size-30 aspect-square -rotate-6 -my-3 shrink-0 outline outline-2 outline-amber-200 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                                className="size-30 aspect-square -rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
                                 alt="links amarelos #3"
                             />
                         </div>
@@ -188,22 +184,22 @@ export default function Home() {
 
                     <div className="items-center pt-16 md:aspect-square">
                         <div className="flex justify-between">
-                            <p className="uppercase text-sm text-amber-100 px-4 py-2 font-unbounded">
+                            <p className="uppercase text-sm text-sun-lighter px-4 py-2 font-unbounded">
                                 Próximas edições
                             </p>
 
-                            <p className="uppercase text-sm text-amber-100 px-4 py-2 font-unbounded">
+                            <p className="uppercase text-sm text-sun-lighter px-4 py-2 font-unbounded">
                                 <CountdownOdometer />
                             </p>
                         </div>
 
                         <div>
-                            <div className="border-amber-200 border-t flex flex-col items-center gap-12 hover:bg-blue-600 group py-3">
+                            <div className="border-sun-light border-t flex flex-col items-center gap-12 hover:bg-code group py-3">
                                 <Image
                                     src="/brand/coming-newsletter.png"
                                     width={2000}
                                     height={2000}
-                                    className="size-36 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-amber-200 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                                    className="size-36 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
                                     alt="links amarelos #3"
                                 />
 
@@ -218,20 +214,20 @@ export default function Home() {
                                         </p>
                                     </div>
 
-                                    <p className="font-redacted text-sm text-amber-200 w-4/5">
+                                    <p className="font-redacted text-sm text-sun-light w-4/5">
                                         o primeiro episódio dos hyperlinks
                                         amarelos, grátis pra todos, com a coisa
                                         mais amarela que já entrou em campo
                                     </p>
                                 </div>
                             </div>
-                            <div className="border-amber-200 border-t flex justify-center items-center gap-6">
+                            <div className="border-sun-light border-t flex justify-center items-center gap-6">
                                 <div className="flex">
                                     <Image
                                         src="/brand/coming-newsletter.png"
                                         width={2000}
                                         height={2000}
-                                        className="size-16 aspect-square -rotate-6  shrink-0 outline outline-2 outline-amber-200 "
+                                        className="size-16 aspect-square -rotate-6  shrink-0 outline outline-2 outline-sun-light "
                                         alt="links amarelos #3"
                                     />
 
@@ -239,7 +235,7 @@ export default function Home() {
                                         src="/brand/coming-podcast.png"
                                         width={2000}
                                         height={2000}
-                                        className="size-16 aspect-square rotate-6 shrink-0 outline outline-2 outline-amber-200 "
+                                        className="size-16 aspect-square rotate-6 shrink-0 outline outline-2 outline-sun-light "
                                         alt="links amarelos #3"
                                     />
                                 </div>
@@ -257,12 +253,12 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="relative grid grid-cols-1 md:grid-cols-2 py-20 font-manrope  bg-amber-200 border-x border-(--amarelo) overflow-hidden">
+                <section className="relative grid grid-cols-1 md:grid-cols-2 py-20 font-manrope  bg-sun-light border-x border-(--sun) overflow-hidden">
                     <div className=" px-12 flex flex-col justify-end gap-6">
                         {" "}
                         <p className="text-xl font-semibold tracking-tight leading-snug">
                             Os links amarelos são curados e realizados{" "}
-                            <span className="text-amber-300">
+                            <span className="text-sun">
                                 {" "}
                                 em uma semana{" "}
                             </span>{" "}
@@ -270,7 +266,7 @@ export default function Home() {
                         </p>
                         <Link
                             href="/sobre"
-                            className="font-space-mono lowercase text-sm underline underline-offset-4 decoration-amber-300 hover:text-white transition-colors"
+                            className="font-space-mono lowercase text-sm underline underline-offset-4 decoration-sun hover:text-white transition-colors"
                         >
                             Leia o manifesto amarelo
                         </Link>
@@ -328,7 +324,7 @@ export default function Home() {
                             </li>
                         </ul>
 
-                        <div className="mt-6 pt-6 border-t border-(--amarelo)">
+                        <div className="mt-6 pt-6 border-t border-(--sun)">
                             <p className="lowercase">
                                 <span className="font-semibold tracking-tight">
                                     Apoio{" "}

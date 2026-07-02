@@ -82,8 +82,8 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${unbounded.variable} ${spaceMono.variable} ${redacted.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav className="relative border-b border-(--amarelo) py-3 px-6 flex justify-between items-center">
-          <Link href="/" className="text-(--amarelo)">
+        <nav className="relative border-b border-(--sun) py-3 px-6 flex justify-between items-center">
+          <Link href="/" className="text-(--sun)">
             <LogoOdometer />
           </Link>
 
@@ -102,7 +102,7 @@ export default function RootLayout({ children }) {
               Apoie
             </Button>
 
-            <div className="hidden md:block w-px h-5 bg-(--amarelo) mx-1" />
+            <div className="hidden md:block w-px h-5 bg-(--sun) mx-1" />
 
             <NavDrawer />
           </div>
@@ -111,11 +111,11 @@ export default function RootLayout({ children }) {
           {children}
         </div>
 
-        <footer className="border-t border-(--amarelo) bg-[url('/bg-texture.svg')] bg-repeat">
+        <footer className="border-t border-(--sun) bg-[url('/bg-texture.svg')] bg-repeat">
           <div className="max-w-4xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Brand */}
             <div className="space-y-3">
-              <p className="font-unbounded text-sm text-(--amarelo-dark) tracking-tight">
+              <p className="font-unbounded text-sm text-(--sun-dark) tracking-tight">
                 links amarelos
               </p>
               <p className="font-manrope text-sm leading-relaxed">
@@ -137,7 +137,7 @@ export default function RootLayout({ children }) {
                   <Link
                     key={href}
                     href={href}
-                    className="font-manrope text-sm hover:text-(--amarelo-dark) transition-colors lowercase"
+                    className="font-manrope text-sm hover:text-(--sun-dark) transition-colors lowercase"
                   >
                     {label}
                   </Link>
@@ -168,7 +168,7 @@ export default function RootLayout({ children }) {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-(--amarelo)/30 px-6 py-4 max-w-4xl mx-auto flex justify-between items-center">
+          <div className="border-t border-(--sun)/30 px-6 py-4 max-w-4xl mx-auto flex justify-between items-center">
             <p className="font-space-mono text-xs text-stone-400 lowercase">
               © {new Date().getFullYear()} links amarelos
             </p>

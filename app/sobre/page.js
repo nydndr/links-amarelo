@@ -49,20 +49,20 @@ const timeline = [
 
 export default function SobrePage() {
   return (
-    <main className="min-h-screen bg-(--amarelo) w-full md:max-w-4xl md:mx-auto">
+    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
       {/* Header */}
-      <section className="border-b border-amber-200 px-8 py-16 space-y-6">
-        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-amber-100 w-fit">
+      <section className="border-b border-sun-light px-8 py-16 space-y-6">
+        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-sun-lighter w-fit">
           sobre
         </p>
         <h1>
           <LinksLogotype
             role="img"
             aria-label="Links Amarelos"
-            className="h-10 md:h-14 w-auto text-amber-50"
+            className="h-10 md:h-14 w-auto text-brand-white"
           />
         </h1>
-        <p className="font-manrope text-xl text-amber-100 max-w-lg leading-relaxed">
+        <p className="font-manrope text-xl text-sun-lighter max-w-lg leading-relaxed">
           Uma curadoria mensal pra te tirar dos sites virais e te levar às
           vizinhanças que você nunca visitou na internet.
         </p>
@@ -71,14 +71,14 @@ export default function SobrePage() {
       {/* O que é */}
       <section className="grid md:grid-cols-2">
         {/* Left: produtos */}
-        <div className="divide-y divide-amber-200 grid grid-rows-3">
+        <div className="divide-y divide-sun-light grid grid-rows-3">
           <div className="p-8 space-y-3">
             <LinksLogotype
               role="img"
               aria-label="Links Amarelos"
-              className="h-4 w-auto text-amber-100"
+              className="h-4 w-auto text-sun-lighter"
             />
-            <p className="font-manrope text-amber-100 leading-relaxed">
+            <p className="font-manrope text-sun-lighter leading-relaxed">
               Uma newsletter mensal que reúne o melhor que uma designer
               altamente técnica, careca, negra e personality hire encontrou por
               aí.
@@ -89,9 +89,9 @@ export default function SobrePage() {
             <OndasLogotype
               role="img"
               aria-label="Ondas Amarelas"
-              className="h-4 w-auto text-amber-100"
+              className="h-4 w-auto text-sun-lighter"
             />
-            <p className="font-manrope text-amber-100 leading-relaxed">
+            <p className="font-manrope text-sun-lighter leading-relaxed">
               O que acontece quando os links amarelos ganham voz! Uma versão
               expandida da conversa também lançada mensalmente no seu ouvidor de
               áudio favorito.
@@ -113,8 +113,8 @@ export default function SobrePage() {
         </div>
 
         {/* Right: timeline */}
-        <div className="p-8 space-y-6 bg-amber-200 border-r border-(--amarelo)">
-          <p className="uppercase text-sm text-(--amarelo) px-4 py-2 font-unbounded">
+        <div className="p-8 space-y-6 bg-sun-light border-r border-(--sun)">
+          <p className="uppercase text-sm text-(--sun) px-4 py-2 font-unbounded">
             Como chegamos aqui
           </p>
           <Timeline items={timeline} />
@@ -122,9 +122,9 @@ export default function SobrePage() {
       </section>
 
       {/* Manifesto */}
-      <section id="manifesto" className="border-b border-amber-200">
+      <section id="manifesto" className="border-b border-sun-light">
         <div className="px-8 py-16 space-y-10">
-          <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-amber-100 w-fit">
+          <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-sun-lighter w-fit">
             manifesto
           </p>
 
@@ -134,7 +134,7 @@ export default function SobrePage() {
               <p>
                 Links podem começar com qualquer coisa, mas acho que esquecemos
                 disso. Hoje em dia todos os links começam com{" "}
-                <span className="font-space-mono bg-amber-200 px-1">
+                <span className="font-space-mono bg-sun-light px-1">
                   https://
                   <TypingCycler />
                 </span>
@@ -179,7 +179,7 @@ export default function SobrePage() {
 
             {/* Princípio 2 */}
             <div className="space-y-4">
-              <h3 className="font-unbounded text-xl text-black tracking-tight">
+              <h3 className="font-unbounded text-xl text-brand-black tracking-tight">
                 Presente e Multimídia
               </h3>
               <p>
@@ -198,7 +198,7 @@ export default function SobrePage() {
 
             {/* Princípio 3 */}
             <div className="space-y-4">
-              <h3 className="font-unbounded text-xl text-black tracking-tight">
+              <h3 className="font-unbounded text-xl text-brand-black tracking-tight">
                 Auto-sustentável e Expansivo
               </h3>
               <p>
@@ -218,7 +218,7 @@ export default function SobrePage() {
 
             {/* Princípio 4 */}
             <div className="space-y-4">
-              <h3 className="font-unbounded text-xl text-black tracking-tight">
+              <h3 className="font-unbounded text-xl text-brand-black tracking-tight">
                 Apoiado e Apoiador
               </h3>
               <p>
@@ -236,14 +236,14 @@ export default function SobrePage() {
             </div>
 
             {/* Fechamento */}
-            <div className="space-y-8 pt-4 border-t border-amber-200">
+            <div className="space-y-8 pt-4 border-t border-sun-light">
               <p>
                 Esses princípios trazem todas as recomendações até vocês e guiam
                 todas as realizações do papel para a realidade. É com eles que
                 não eu, mas nós, vamos pintar o mundo de amarelo.
               </p>
               <div className="space-y-1">
-                <p className="font-unbounded text-base text-black">
+                <p className="font-unbounded text-base text-brand-black">
                   Amarelo Dandara
                 </p>
                 <p className="italic">
@@ -251,7 +251,7 @@ export default function SobrePage() {
                     href="https://en.wikipedia.org/wiki/Gesamtkunstwerk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 decoration-black/30 hover:decoration-black transition-colors"
+                    className="underline underline-offset-4 decoration-brand-black/30 hover:decoration-brand-black transition-colors"
                   >
                     Gesamtkunstwerk
                   </a>{" "}
@@ -264,15 +264,15 @@ export default function SobrePage() {
       </section>
 
       {/* Quem faz */}
-      <section className="border-b border-amber-200 px-8 py-12 space-y-4">
-        <p className="uppercase text-xs text-amber-200 font-unbounded tracking-widest">
+      <section className="border-b border-sun-light px-8 py-12 space-y-4">
+        <p className="uppercase text-xs text-sun-light font-unbounded tracking-widest">
           Quem faz
         </p>
-        <p className="font-manrope text-amber-100 leading-relaxed max-w-prose">
+        <p className="font-manrope text-sun-lighter leading-relaxed max-w-prose">
           Amarelo dandara. Escritor, curioso profissional e colecionador de
           links desde antes de isso ter nome.
         </p>
-        <p className="font-manrope text-amber-100 leading-relaxed max-w-prose">
+        <p className="font-manrope text-sun-lighter leading-relaxed max-w-prose">
           Links Amarelos nasceu da vontade de compartilhar o que vale a pena na
           internet — sem algoritmo, sem anúncio, sem pressa.
         </p>
@@ -281,10 +281,10 @@ export default function SobrePage() {
       {/* CTA */}
       <section className="px-8 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-1">
-          <p className="font-manrope text-xl font-semibold text-amber-100 tracking-tight">
+          <p className="font-manrope text-xl font-semibold text-sun-lighter tracking-tight">
             Pronto para começar?
           </p>
-          <p className="font-manrope text-amber-200 text-sm">
+          <p className="font-manrope text-sun-light text-sm">
             Assine grátis ou apoie o projeto.
           </p>
         </div>

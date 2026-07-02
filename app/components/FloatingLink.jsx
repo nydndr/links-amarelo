@@ -133,13 +133,13 @@ export default function FloatingLink({ title, url }) {
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
             >
-              <div className="bg-white border border-amber-200 rounded-sm shadow-sm px-3 py-2 flex items-center gap-2">
+              <div className="bg-white border border-sun-light rounded-sm shadow-sm px-3 py-2 flex items-center gap-2">
                 <span className="font-manrope font-semibold text-sm text-stone-900 whitespace-nowrap">
                   {title}
                 </span>
                 <button
                   onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
-                  className="text-amber-500 hover:text-blue-500 transition-colors duration-150"
+                  className="text-sun-dark hover:text-code transition-colors duration-150"
                   title="Abrir link"
                 >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -149,7 +149,7 @@ export default function FloatingLink({ title, url }) {
                   </svg>
                 </button>
               </div>
-              <div className="w-2.5 h-2.5 bg-white border-r border-b border-amber-200 rotate-45 -mt-1.5" />
+              <div className="w-2.5 h-2.5 bg-white border-r border-b border-sun-light rotate-45 -mt-1.5" />
             </div>
           )}
 

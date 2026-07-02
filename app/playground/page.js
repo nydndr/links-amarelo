@@ -1,80 +1,35 @@
-import ExternalLinkPill from "../components/ExternalLinkPill";
-import Button from "../components/Button";
-
-// Every distinct background surface the site actually uses, plus black/white
-// as contrast extremes — so pill contrast gets checked directly, not guessed.
-const BACKGROUNDS = [
-    { label: "--amarelo (fundo principal)", className: "bg-(--amarelo)" },
-    { label: "amber-200 (superfície)", className: "bg-amber-200" },
-    { label: "blue-500 (painel apoie)", className: "bg-blue-500" },
-    { label: "fundo padrão da página", className: "bg-[oklch(92.4%_0.12_95.746)]" },
-    { label: "white", className: "bg-white" },
-    { label: "black", className: "bg-black" },
+// Final token set — named via agentation comments on the old comparison
+// grids, matched by exact swatch background color. Every other yellow that
+// used to exist in the codebase (amber-50..900, --amarelo, --amarelo-dark,
+// the oklch body bg, a couple one-off hexes) got folded into whichever of
+// these 6 is closest in OKLab space. Registered as real Tailwind tokens in
+// globals.css (--color-brand-white etc.) — these are now bg-sun, text-sun-light...
+const TOKENS = [
+    { name: "brand-white", swatch: "bg-brand-white", value: "#fffbeb", replaces: "amber-50" },
+    { name: "sun-lighter", swatch: "bg-sun-lighter", value: "#fef3c7", replaces: "amber-100" },
+    { name: "sun-light", swatch: "bg-sun-light", value: "#fde68a", replaces: "amber-200, body bg, #fee685, #ffe270" },
+    { name: "sun", swatch: "bg-sun", value: "#ffcc00", replaces: "--amarelo, amber-300, amber-400" },
+    { name: "sun-dark", swatch: "bg-sun-dark", value: "#f59e0b", replaces: "amber-500, --amarelo-dark, amber-600, amber-700, amber-800, amber-900" },
 ];
 
-// Consolidated after the /playground review round: white-outline secondary
-// dropped in favor of amber-outline (every real usage sits on an
-// amarelo-family surface, where amber reads far better), the unstyled plan
-// card CTA folded into secondary, ghost restyled from pill to underline.
-//
-// `badOn` was flagged via agentation comments — those cells are pruned from
-// the contrast grid below instead of shown broken. See components/Button.jsx
-// for the same list, kept as the source of truth.
-// `states` is the background used for the default/hover/focus/active/disabled
-// strip — always one of the surfaces this variant is actually cleared for.
-const BUTTONS = [
-    {
-        key: "primary",
-        variant: "primary",
-        label: "Primary",
-        note: "sobre/page.js (\"apoiar o projeto\"), realizacoes/RealizacoesClient.js (\"ver planos de apoio\"). Supports an optional `trail` prop (brand pixel-trail sweep).",
-        text: "assinar",
-        badOn: ["blue-500 (painel apoie)"],
-        states: "--amarelo (fundo principal)",
-    },
-    {
-        key: "primary-inverted",
-        variant: "primary-inverted",
-        label: "Primary — inverted",
-        note: "page.js (\"ver planos\", inside the already-blue apoie panel). `trail` defaults to a blue sweep here so it stays visible on white.",
-        text: "ver planos",
-        badOn: ["white"],
-        states: "blue-500 (painel apoie)",
-    },
-    {
-        key: "secondary",
-        variant: "secondary",
-        label: "Secondary",
-        note: "sobre/page.js, page.js (\"ver realizações\"), apoio/page.js (\"fazer uma doação\"), apoio/PlansToggle.js plan CTAs — all consolidated onto this one style.",
-        text: "assinar grátis",
-        badOn: ["amber-200 (superfície)", "fundo padrão da página", "white"],
-        states: "--amarelo (fundo principal)",
-    },
-    {
-        key: "nav",
-        variant: "nav",
-        label: "Nav / brand CTA",
-        note: "layout.js (\"Apoie\") — the only prominent non-primary CTA, currently nav-only.",
-        text: "apoie",
-        badOn: ["--amarelo (fundo principal)"],
-        states: "amber-200 (superfície)",
-    },
-    {
-        key: "ghost",
-        variant: "ghost",
-        label: "Ghost",
-        note: "components/Timeline.js — underlined text, not a pill (a pill reads too much like the section badges).",
-        text: "ler mais",
-        badOn: [],
-        states: "white",
-    },
+// Final token set — 3 shades picked and named via agentation, everything
+// else (blue-200/600/700, the other azure-radiance candidates) folded in or
+// dropped in favor of these.
+const BLUES = [
+    { name: "code-light", swatch: "bg-code-light", value: "#dbeafe", replaces: "azure-radiance-100 (new — no prior usage)" },
+    { name: "code", swatch: "bg-code", value: "#3b82f6", replaces: "blue-200, blue-500, blue-600" },
+    { name: "code-dark", swatch: "bg-code-dark", value: "#1e40af", replaces: "blue-700, blue-800" },
 ];
 
-const STATES = ["default", "hover", "focus", "active", "disabled"];
+// Chosen via the color-picker experiment — real black, replaces the old
+// #442304 (--foreground, formerly amber-950-ish) site-wide.
+const BLACKS = [
+    { name: "brand-black", swatch: "bg-brand-black", value: "#110a03", replaces: "--foreground (#442304)" },
+];
 
 export default function PlaygroundPage() {
     return (
-        <main className="font-space-mono min-h-screen bg-amber-50 px-6 py-12">
+        <main className="font-space-mono min-h-screen bg-brand-white px-6 py-12">
             <div className="max-w-5xl mx-auto space-y-8">
                 <div className="space-y-1">
                     <h1 className="text-2xl font-manrope font-semibold text-stone-900">
@@ -87,27 +42,21 @@ export default function PlaygroundPage() {
 
                 <section className="space-y-3">
                     <h2 className="text-sm font-semibold text-stone-700">
-                        Contraste — pills de redirecionamento
+                        Paleta — amarelos ({TOKENS.length} tokens, era 14 tons)
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {BACKGROUNDS.map(({ label, className }) => (
-                            <div
-                                key={label}
-                                className={`flex flex-col gap-4 p-8 rounded border border-stone-200 ${className}`}
-                            >
-                                <span className="text-[10px] text-stone-500 bg-white/70 self-start px-1.5 py-0.5 rounded">
-                                    {label}
-                                </span>
-                                <div className="flex gap-3 flex-wrap">
-                                    <ExternalLinkPill
-                                        platform="substack"
-                                        href="https://amarelodandara.substack.com"
-                                    />
-                                    <ExternalLinkPill
-                                        platform="spotify"
-                                        href="https://open.spotify.com/show/043Gs7eyY2KOlotEWSTSxB?si=e7abf2b9730747d7"
-                                    />
-                                </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {TOKENS.map(({ name, swatch, value, replaces }) => (
+                            <div key={name} className="space-y-1.5">
+                                <div className={`h-16 rounded border border-stone-200 ${swatch}`} />
+                                <p className="text-[11px] font-semibold text-stone-800">
+                                    {name}
+                                </p>
+                                <p className="text-[10px] text-stone-500 font-space-mono">
+                                    {value}
+                                </p>
+                                <p className="text-[10px] text-stone-400 leading-snug">
+                                    substitui: {replaces}
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -115,92 +64,46 @@ export default function PlaygroundPage() {
 
                 <section className="space-y-3">
                     <h2 className="text-sm font-semibold text-stone-700">
-                        Botões — components/Button.jsx
+                        Paleta — azuis ({BLUES.length} tokens, era 5 tons)
                     </h2>
-                    <p className="text-xs text-stone-500 max-w-2xl">
-                        Hierarquia final decidida a partir da rodada de
-                        comentários — cada card abaixo é o componente real,
-                        não uma cópia do className.
-                    </p>
-                    <div className="space-y-10">
-                        {BUTTONS.map(({ key, variant, label, note, text, badOn, states }) => {
-                            const validBackgrounds = BACKGROUNDS.filter(
-                                (bg) => !badOn.includes(bg.label),
-                            );
-                            const statesBg = BACKGROUNDS.find(
-                                (bg) => bg.label === states,
-                            );
-                            return (
-                                <div key={key} className="space-y-4">
-                                    <div>
-                                        <h3 className="text-sm font-semibold text-stone-800">
-                                            {label}
-                                        </h3>
-                                        <p className="text-[11px] text-stone-500">
-                                            {note}
-                                        </p>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                        {validBackgrounds.map((bg) => (
-                                            <div
-                                                key={bg.label}
-                                                className={`flex flex-col items-center justify-center gap-3 p-8 rounded border border-stone-200 ${bg.className}`}
-                                            >
-                                                <span className="text-[10px] text-stone-500 bg-white/70 px-1.5 py-0.5 rounded self-start">
-                                                    {bg.label}
-                                                </span>
-                                                <Button variant={variant} href="#">
-                                                    {text}
-                                                </Button>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="space-y-1.5">
-                                        <span className="text-[10px] text-stone-500 uppercase tracking-widest">
-                                            Estados — sobre {statesBg.label}
-                                        </span>
-                                        <div
-                                            className={`grid grid-cols-2 sm:grid-cols-5 gap-3 p-6 rounded border border-stone-200 ${statesBg.className}`}
-                                        >
-                                            {STATES.map((state) => (
-                                                <div
-                                                    key={state}
-                                                    className="flex flex-col items-center gap-2"
-                                                >
-                                                    <span className="text-[9px] text-stone-500 bg-white/70 px-1 py-0.5 rounded">
-                                                        {state}
-                                                    </span>
-                                                    <Button
-                                                        variant={variant}
-                                                        href="#"
-                                                        disabled={state === "disabled"}
-                                                        previewState={
-                                                            state === "default" ||
-                                                            state === "disabled"
-                                                                ? undefined
-                                                                : state
-                                                        }
-                                                    >
-                                                        {text}
-                                                    </Button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {BLUES.map(({ name, swatch, value, replaces }) => (
+                            <div key={name} className="space-y-1.5">
+                                <div className={`h-16 rounded border border-stone-200 ${swatch}`} />
+                                <p className="text-[11px] font-semibold text-stone-800">
+                                    {name}
+                                </p>
+                                <p className="text-[10px] text-stone-500 font-space-mono">
+                                    {value}
+                                </p>
+                                <p className="text-[10px] text-stone-400 leading-snug">
+                                    substitui: {replaces}
+                                </p>
+                            </div>
+                        ))}
                     </div>
-                    <p className="text-[11px] text-stone-500 max-w-2xl pt-2">
-                        Não incluídos (estruturalmente diferentes de um botão
-                        simples de texto): o botão físico de hold-to-interact
-                        (ExperimenteSection.jsx), os ícones utilitários sem
-                        fundo (copiar/abrir em AutoTooltips.js e
-                        FloatingLink.jsx), e o toggle segmentado mensal/anual
-                        (PlansToggle.js, hoje sem estilo nenhum).
-                    </p>
+                </section>
+
+                <section className="space-y-3">
+                    <h2 className="text-sm font-semibold text-stone-700">
+                        Paleta — preto ({BLACKS.length} token)
+                    </h2>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {BLACKS.map(({ name, swatch, value, replaces }) => (
+                            <div key={name} className="space-y-1.5">
+                                <div className={`h-16 rounded border border-stone-200 ${swatch}`} />
+                                <p className="text-[11px] font-semibold text-stone-800">
+                                    {name}
+                                </p>
+                                <p className="text-[10px] text-stone-500 font-space-mono">
+                                    {value}
+                                </p>
+                                <p className="text-[10px] text-stone-400 leading-snug">
+                                    substitui: {replaces}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </section>
             </div>
         </main>

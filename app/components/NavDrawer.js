@@ -50,7 +50,7 @@ export default function NavDrawer({
           height={size}
           viewBox={`0 0 ${size} ${size}`}
           fill="none"
-          className="text-(--amarelo-dark)"
+          className="text-(--sun-dark)"
           style={{ "--hb-gap": `${gap}px` }}
         >
           <line
@@ -78,7 +78,7 @@ export default function NavDrawer({
       </button>
 
       <div
-        className={`absolute left-0 right-0 top-full z-50 border-b border-(--amarelo) bg-amber-200 transition-[opacity,transform] duration-300 ${
+        className={`absolute left-0 right-0 top-full z-50 border-b border-(--sun) bg-sun-light transition-[opacity,transform] duration-300 ${
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-1 pointer-events-none"
@@ -90,7 +90,7 @@ export default function NavDrawer({
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="flex px-6 py-3 font-manrope items-center gap-2 [&:not(:last-child)]:border-b border-(--amarelo) hover:bg-(--amarelo) group text-(--amarelo-dark)"
+              className="flex px-6 py-3 font-manrope items-center gap-2 [&:not(:last-child)]:border-b border-(--sun) hover:bg-(--sun) group text-(--sun-dark)"
             >
               <span className="font-semibold lowercase text-lg tracking-tight group-hover:text-white transition-colors">
                 {label}

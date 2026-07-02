@@ -3,17 +3,17 @@ import Button from "./Button";
 export default function Timeline({ items }) {
   return (
     <div className="relative">
-      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-black/15" />
+      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-brand-black/15" />
       <div className="space-y-8">
         {items.map((item) => (
           <div key={item.ano} className="flex gap-4">
-            <div className="mt-1.5 size-3.5 rounded-full border-2 border-black/30 bg-[#fee685] shrink-0 z-10" />
+            <div className="mt-1.5 size-3.5 rounded-full border-2 border-brand-black/30 bg-sun-light shrink-0 z-10" />
             <div className="space-y-1.5 pb-1">
-              <p className="font-space-mono text-xs text-black/50">{item.ano}</p>
-              <p className="font-manrope font-semibold text-black leading-snug">
+              <p className="font-space-mono text-xs text-brand-black/50">{item.ano}</p>
+              <p className="font-manrope font-semibold text-brand-black leading-snug">
                 {item.titulo}
               </p>
-              <p className="font-manrope text-sm text-black/70 leading-relaxed">
+              <p className="font-manrope text-sm text-brand-black/70 leading-relaxed">
                 {item.desc}
               </p>
               {item.href && (

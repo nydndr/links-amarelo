@@ -24,8 +24,8 @@ const PLATFORMS = {
 // page section — see the contrast playground) and any visibility overrides.
 //
 // Checked against every surface in the contrast playground (/playground):
-// OK on: white, amber-200, the page's default pale-yellow body background.
-// NOT OK on: black, blue-500, --amarelo (brand yellow) — the orange/green
+// OK on: white, sun-light, the page's default pale-yellow body background.
+// NOT OK on: black, code, --sun (brand yellow) — the orange/green
 // brand colors lose contrast there. Don't place this pill on those surfaces;
 // pick a different surface for the section instead of forcing a color fix.
 export default function ExternalLinkPill({ platform, href, className = "" }) {

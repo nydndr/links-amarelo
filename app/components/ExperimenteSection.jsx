@@ -357,7 +357,7 @@ export default function ExperimenteSection() {
         <section
             ref={sectionRef}
             id="experimente"
-            className="relative font-manrope text-center py-20 border-x border-(--amarelo) space-y-12 bg-amber-200 bg-[url('/bg-circles.svg')] bg-repeat overflow-hidden"
+            className="relative font-manrope text-center py-20 border-x border-(--sun) space-y-12 bg-sun-light bg-[url('/bg-circles.svg')] bg-repeat overflow-hidden"
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredId(null)}
         >
@@ -382,7 +382,7 @@ export default function ExperimenteSection() {
                             zIndex: 30,
                         }}
                     >
-                        <div className="bg-white border border-amber-200 rounded-sm shadow-sm px-3 py-2 flex items-center gap-2">
+                        <div className="bg-white border border-sun-light rounded-sm shadow-sm px-3 py-2 flex items-center gap-2">
                             <span className="font-manrope font-semibold text-sm text-stone-900 whitespace-nowrap">
                                 {c.title}
                             </span>
@@ -394,7 +394,7 @@ export default function ExperimenteSection() {
                                         "noopener,noreferrer",
                                     )
                                 }
-                                className="text-amber-500 hover:text-blue-500 transition-colors duration-150"
+                                className="text-sun-dark hover:text-code transition-colors duration-150"
                                 title="Abrir link"
                             >
                                 <svg
@@ -411,13 +411,13 @@ export default function ExperimenteSection() {
                                 </svg>
                             </button>
                         </div>
-                        <div className="w-2.5 h-2.5 bg-white border-r border-b border-amber-200 rotate-45 -mt-1.5" />
+                        <div className="w-2.5 h-2.5 bg-white border-r border-b border-sun-light rotate-45 -mt-1.5" />
                     </div>
                 ))}
 
             {/* Text content */}
             <div className="relative space-y-6" style={{ zIndex: 5 }}>
-                <p className="lowercase rounded-full text-sm font-space-mono px-2 py-0.5 bg-amber-100/20 border border-amber-100 text-white w-fit mx-auto">
+                <p className="lowercase rounded-full text-sm font-space-mono px-2 py-0.5 bg-sun-lighter/20 border border-sun-lighter text-white w-fit mx-auto">
                     experimente
                 </p>
                 <div className="space-y-2">
@@ -447,7 +447,7 @@ export default function ExperimenteSection() {
                         isBtnHoveredRef.current = false;
                     }}
                     disabled={isExhausted}
-                    className="relative overflow-hidden bg-blue-500 text-white px-8 py-3 rounded-full text-xl lowercase font-space-mono select-none touch-none disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="relative overflow-hidden bg-code text-white px-8 py-3 rounded-full text-xl lowercase font-space-mono select-none touch-none disabled:opacity-40 disabled:cursor-not-allowed"
                     style={{ transform: `scale(${scale})` }}
                 >
                     <canvas
@@ -459,7 +459,7 @@ export default function ExperimenteSection() {
                     {/* inverted fill — sweeps left→right matching hold progress */}
                     <span
                         aria-hidden
-                        className="absolute inset-0 flex items-center justify-center bg-white text-blue-500 rounded-full font-space-mono text-xl lowercase pointer-events-none"
+                        className="absolute inset-0 flex items-center justify-center bg-white text-code rounded-full font-space-mono text-xl lowercase pointer-events-none"
                         style={{
                             clipPath: `inset(0 ${((1 - holdProgress) * 100).toFixed(1)}% 0 0)`,
                         }}
@@ -468,7 +468,7 @@ export default function ExperimenteSection() {
                     </span>
                 </button>
                 <p
-                    className="font-space-mono text-xs text-blue-200 transition-opacity duration-700"
+                    className="font-space-mono text-xs text-code transition-opacity duration-700"
                     style={{ opacity: hasInteracted ? 1 : 0 }}
                 >
                     {isExhausted

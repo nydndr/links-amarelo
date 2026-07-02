@@ -114,11 +114,11 @@ export default function AutoTooltips() {
 
   const wordClass = (i) =>
     `transition-colors duration-[600ms] ${
-      activeIdx === i ? "text-amber-100" : ""
+      activeIdx === i ? "text-sun-lighter" : ""
     }`;
 
   return (
-    <div className="flex flex-col gap-4  text-[#442304]">
+    <div className="flex flex-col gap-4  text-foreground">
       <div className="space-y-2">
         <p className="font-manrope text-2xl tracking-tigther text-balance font-semibold">
           Todo mês, recomendações de{" "}
@@ -137,13 +137,13 @@ export default function AutoTooltips() {
           internet ainda tem pra oferecer.
         </p>
       </div>
-      <div className="bg-amber-200 flex px-3 py-2 rounded-full text-xs font-space-mono justify-between items-center gap-2">
+      <div className="bg-sun-light flex px-3 py-2 rounded-full text-xs font-space-mono justify-between items-center gap-2">
         <div className="relative flex-1 overflow-hidden min-w-0">
           <span className="whitespace-nowrap block">
             {displayedUrl}
             {isAnimating && "▋"}
           </span>
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-amber-200 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-sun-light to-transparent pointer-events-none" />
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <button

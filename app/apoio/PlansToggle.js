@@ -7,7 +7,7 @@ export default function PlansToggle() {
   const [anual, setAnual] = useState(false);
 
   return (
-    <section className="border-y-2 border-amber-200 grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-amber-200">
+    <section className="border-y-2 border-sun-light grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-sun-light">
       <div className="bg-[url('/bg-texture-yellow.svg')] bg-repeat flex flex-col">
         <div className="p-8 flex flex-col gap-6 flex-1">
           <div className="space-y-2">
@@ -64,7 +64,7 @@ export default function PlansToggle() {
               {anual ? (
                 <>
                   R$ 90
-                  <sup className="font-space-mono text-xs font-normal align-super ml-1 text-amber-700">
+                  <sup className="font-space-mono text-xs font-normal align-super ml-1 text-sun-dark">
                     3 meses grátis
                   </sup>
                 </>

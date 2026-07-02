@@ -105,7 +105,7 @@ export default function YellowCircle({ filled = false, className = "" }) {
   }, [filled]);
 
   if (!filled) {
-    return <div className={`rounded-full border-2 border-amber-400 ${className}`} />;
+    return <div className={`rounded-full border-2 border-sun ${className}`} />;
   }
 
   return <canvas ref={canvasRef} className={`rounded-full ${className}`} />;
