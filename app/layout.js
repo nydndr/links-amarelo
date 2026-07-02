@@ -58,20 +58,20 @@ export const metadata = {
     default: "links amarelos",
     template: "%s • links amarelos",
   },
-  description: "Curadoria semanal de links que valem seu tempo.",
+  description: "Curadoria mensal de links que valem seu tempo.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "links amarelos",
-    description: "Curadoria semanal de links que valem seu tempo.",
+    description: "Curadoria mensal de links que valem seu tempo.",
     url: "https://linksamarelos.com",
     siteName: "links amarelos",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "links amarelos",
-    description: "Curadoria semanal de links que valem seu tempo.",
+    description: "Curadoria mensal de links que valem seu tempo.",
   },
 };
 
