@@ -1,5 +1,6 @@
 import PlansToggle from "./PlansToggle";
 import Button from "../components/Button";
+import SectionPill from "../components/SectionPill";
 
 export const metadata = {
   title: "apoio",
@@ -21,9 +22,7 @@ export default function ApoioPage() {
     <main className="min-h-screen bg-(--sun) border-x-2 border-sun-light w-full md:max-w-4xl md:mx-auto">
       {/* Header */}
       <section className=" space-y-6 px-8 py-16">
-        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-sun-lighter/20 border border-brand-white/60 text-brand-white w-fit">
-          Apoie
-        </p>
+        <SectionPill>Apoie</SectionPill>
 
         <div className="space-y-2">
           <h1 className="font-unbounded text-4xl md:text-6xl text-sun-lighter tracking-tight leading-tight">

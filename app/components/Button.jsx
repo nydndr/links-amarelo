@@ -29,9 +29,12 @@ const VARIANTS = {
   },
   "primary-inverted": {
     // Its real usage (page.js) sits on code — a default/blue/white ring
-    // vanishes there, so this variant gets its own sun focus ring.
+    // vanishes there, so this variant gets its own sun focus ring. The
+    // border-2 border-white is what keeps the button visible on :hover —
+    // without it, hover:bg-code + hover:text-white makes the button fill
+    // exactly match the surrounding bg-code panel and disappear.
     className:
-      "px-6 py-3 bg-white text-code rounded-full hover:bg-code hover:text-white active:bg-code-dark focus-visible:ring-(--sun)",
+      "px-6 py-3 bg-white text-code border-2 border-white rounded-full hover:bg-code hover:text-white active:bg-code-dark focus-visible:ring-(--sun)",
     trailColor: "59,130,246", // code — default white trail would vanish on this bg
   },
   secondary: {

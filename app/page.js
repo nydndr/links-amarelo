@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import AutoTooltips from "./components/AutoTooltips";
 import LogoCarousel from "./components/LogoCarousel";
 import ExperimenteSection from "./components/ExperimenteSection";
@@ -7,6 +6,7 @@ import CountdownOdometer from "./components/CountdownOdometer";
 import FloatingLink from "./components/FloatingLink";
 import ExternalLinkPill from "./components/ExternalLinkPill";
 import Button from "./components/Button";
+import SectionPill from "./components/SectionPill";
 
 export default function Home() {
     return (
@@ -36,9 +36,9 @@ export default function Home() {
                                     <p className="font-manrope font-bold tracking-tight">
                                         links amarelos #3
                                     </p>
-                                    <p className="lowercase flex rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white">
+                                    <SectionPill className="flex">
                                         Leia
-                                    </p>
+                                    </SectionPill>
                                 </div>
                                 <p className="font-manrope text-sm">
                                     maestros, saltos e seriedade
@@ -59,9 +59,9 @@ export default function Home() {
                                     <p className="font-manrope font-bold tracking-tight">
                                         ondas amarelas #6
                                     </p>
-                                    <p className="lowercase flex rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white">
+                                    <SectionPill className="flex">
                                         Ouça
-                                    </p>
+                                    </SectionPill>
                                 </div>
                                 <p className="font-manrope text-sm">
                                     autorrealização, autocriação
@@ -84,9 +84,9 @@ export default function Home() {
                     className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x divide-sun-light"
                 >
                     <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-[url('/bg-texture-cutting-pad.svg')] bg-cover">
-                        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
+                        <SectionPill className="mx-auto">
                             Explore
-                        </p>
+                        </SectionPill>
 
                         <div className="font-manrope text-center mx-auto space-y-4">
                             <p className="w-2/3 mx-auto text-xl  font-semibold tracking-tigther leading-snug">
@@ -99,15 +99,15 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <Button variant="secondary" href="/realizacoes" className="text-sm">
+                        <Button variant="primary" href="/realizacoes" className="text-sm">
                             ver realizações
                         </Button>
                     </div>
 
                     <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-code text-white">
-                        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
+                        <SectionPill tone="dark" className="mx-auto">
                             Apoie
-                        </p>
+                        </SectionPill>
 
                         <div className="font-manrope text-center mx-auto space-y-4 ">
                             <p className="w-2/3 mx-auto text-xl  font-semibold tracking-tigther leading-snug">
@@ -132,9 +132,9 @@ export default function Home() {
 
                 <section className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x-2 divide-sun-light">
                     <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-sun-light">
-                        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
+                        <SectionPill className="mx-auto">
                             última edição
-                        </p>
+                        </SectionPill>
 
                         <div className="flex flex-col items-center gap-2">
                             <div>
@@ -209,9 +209,9 @@ export default function Home() {
                                             hyperlinks amarelos #1
                                         </p>
 
-                                        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50  text-white w-fit mx-auto">
+                                        <SectionPill className="mx-auto">
                                             grátis
-                                        </p>
+                                        </SectionPill>
                                     </div>
 
                                     <p className="font-redacted text-sm text-sun-light w-4/5">
@@ -221,7 +221,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="border-sun-light border-t flex justify-center items-center gap-6">
+                            <div className="flex justify-center items-center gap-6">
                                 <div className="flex">
                                     <Image
                                         src="/brand/coming-newsletter.png"
@@ -264,12 +264,9 @@ export default function Home() {
                             </span>{" "}
                             por amarelo dandara.
                         </p>
-                        <Link
-                            href="/sobre"
-                            className="font-space-mono lowercase text-sm underline underline-offset-4 decoration-sun hover:text-white transition-colors"
-                        >
+                        <Button variant="ghost" href="/sobre">
                             Leia o manifesto amarelo
-                        </Link>
+                        </Button>
                     </div>
 
                     <div className="font-manrope px-12">

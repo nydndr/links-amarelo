@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "../components/Button";
+import SectionPill from "../components/SectionPill";
 
 export default function PlansToggle() {
   const [anual, setAnual] = useState(false);
@@ -11,9 +12,7 @@ export default function PlansToggle() {
       <div className="bg-[url('/bg-texture-yellow.svg')] bg-repeat flex flex-col">
         <div className="p-8 flex flex-col gap-6 flex-1">
           <div className="space-y-2">
-            <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 border w-fit">
-              Membro
-            </p>
+            <SectionPill>Membro</SectionPill>
             <h2 className="lowercase font-unbounded text-2xl tracking-tight">
               Canário
             </h2>
@@ -47,9 +46,7 @@ export default function PlansToggle() {
         <div className="p-8 flex flex-col gap-6 flex-1">
           <div className="flex items-start justify-between gap-2">
             <div className="space-y-2">
-              <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 border w-fit">
-                Membro
-              </p>
+              <SectionPill>Membro</SectionPill>
               <h2 className="lowercase font-unbounded text-2xl tracking-tight">
                 Ouro
               </h2>

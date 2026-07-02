@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import YellowCircle from "../components/YellowCircle";
 import Button from "../components/Button";
+import SectionPill from "../components/SectionPill";
 
 const statusStyles = {
   ativa: "",
@@ -125,9 +126,7 @@ export default function RealizacoesClient() {
     <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
       {/* Header */}
       <section className="border-b border-sun-light px-8 py-16 space-y-6">
-        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-white w-fit">
-          realizações
-        </p>
+        <SectionPill>realizações</SectionPill>
         <h1 className="font-unbounded text-4xl md:text-6xl text-sun-lighter tracking-tight leading-tight">
           O que nasce dos
           <br />

@@ -10,13 +10,15 @@ const PLATFORMS = {
     Icon: SubstackIcon,
     iconSize: "size-3",
     label: "Leia",
-    classes: "border-orange-400/50 text-orange-600 focus-visible:ring-orange-500",
+    classes:
+      "border-orange-400/50 text-orange-600 hover:border-orange-400 hover:bg-orange-500/10 hover:text-orange-700 active:bg-orange-500/20 focus-visible:ring-orange-500",
   },
   spotify: {
     Icon: SpotifyIcon,
     iconSize: "size-4",
     label: "Ouça",
-    classes: "border-green-400/50 text-green-800 focus-visible:ring-green-600",
+    classes:
+      "border-green-400/50 text-green-800 hover:border-green-500 hover:bg-green-500/10 hover:text-green-900 active:bg-green-500/20 focus-visible:ring-green-600",
   },
 };
 

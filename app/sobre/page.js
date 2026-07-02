@@ -4,6 +4,7 @@ import HyperlinksLogo from "../components/icons/HyperlinksLogo";
 import Timeline from "../components/Timeline";
 import TypingCycler from "../components/TypingCycler";
 import Button from "../components/Button";
+import SectionPill from "../components/SectionPill";
 
 export const metadata = {
   title: "sobre",
@@ -52,9 +53,7 @@ export default function SobrePage() {
     <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
       {/* Header */}
       <section className="border-b border-sun-light px-8 py-16 space-y-6">
-        <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-sun-lighter w-fit">
-          sobre
-        </p>
+        <SectionPill>sobre</SectionPill>
         <h1>
           <LinksLogotype
             role="img"
@@ -124,9 +123,7 @@ export default function SobrePage() {
       {/* Manifesto */}
       <section id="manifesto" className="border-b border-sun-light">
         <div className="px-8 py-16 space-y-10">
-          <p className="lowercase rounded-full text-xs font-space-mono px-2 py-0.5 bg-white/10 border border-white/50 text-sun-lighter w-fit">
-            manifesto
-          </p>
+          <SectionPill>manifesto</SectionPill>
 
           <div className="font-manrope text-lg w-3/4 space-y-10">
             {/* Intro */}

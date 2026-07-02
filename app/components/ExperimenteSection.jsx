@@ -417,9 +417,6 @@ export default function ExperimenteSection() {
 
             {/* Text content */}
             <div className="relative space-y-6" style={{ zIndex: 5 }}>
-                <p className="lowercase rounded-full text-sm font-space-mono px-2 py-0.5 bg-sun-lighter/20 border border-sun-lighter text-white w-fit mx-auto">
-                    experimente
-                </p>
                 <div className="space-y-2">
                     <p className="font-manrope text-2xl tracking-tight text-balance font-semibold">
                         Não tem certeza se essa curadoria é pra você?
