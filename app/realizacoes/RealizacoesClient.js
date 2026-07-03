@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import YellowCircle from "../components/YellowCircle";
 import Button from "../components/Button";
-import SectionPill from "../components/SectionPill";
+import SectionPill, { PILL_BASE } from "../components/SectionPill";
+import Accordion from "../components/Accordion";
+import Link from "next/link";
 
 const statusStyles = {
-  ativa: "",
-  construindo: "",
-  realizada: "",
-  planejada: "",
+  ativa: "border-sun-dark text-sun-dark",
+  construindo: "border-sun-dark text-sun-dark border-dashed",
+  planejada: "border-sun-dark text-sun-dark border-dashed",
 };
 
 function StatusPill({ status }) {
+  if (!status) return null;
   return (
-    <span className={`a ${statusStyles[status] ?? statusStyles.planejada}`}>
+    <span className={`${PILL_BASE} ${statusStyles[status] ?? ""}`}>
       {status}
     </span>
   );
@@ -24,99 +24,64 @@ function StatusPill({ status }) {
 
 function RealizacaoCard({ status, name, cover, cta, href, children }) {
   return (
-    <div className="">
-      <StatusPill status={status} />
+    <div className="p-6 aspect-square flex flex-col justify-between">
+      <div className="flex justify-end">
+        <StatusPill status={status} />
+      </div>
 
-      {status === "construindo" ? (
-        <YellowCircle filled className="size-30 shrink-0" />
-      ) : status === "planejada" ? (
-        <YellowCircle className="size-30 shrink-0" />
-      ) : cover ? (
-        <Image
-          src={cover}
-          width={400}
-          height={400}
-          alt={name}
-          className="size-30 aspect-square rounded-sm outline outline-2 outline-sun rotate-1 shrink-0 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
-        />
-      ) : (
-        <div className="size-20 rounded-sm border-2 border-dashed border-sun/40 flex items-center justify-center shrink-0">
-          <span className="font-space-mono text-xs text-sun-dark">
-            em breve
-          </span>
-        </div>
-      )}
+      <div>
+        {status === "construindo" ? (
+          <YellowCircle filled className="size-20 shrink-0" />
+        ) : status === "planejada" ? (
+          <YellowCircle className="size-20 shrink-0" />
+        ) : !status ? (
+          <div
+            className="size-20 shrink-0 bg-sun-lighter rounded-[60%_40%_55%_45%/45%_55%_40%_60%]"
+            aria-hidden="true"
+          />
+        ) : cover ? (
+          <Image
+            src={cover}
+            width={400}
+            height={400}
+            alt={name}
+            className="size-30 aspect-square rounded-sm outline outline-sun-lighter rotate-1 shrink-0 transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+          />
+        ) : (
+          <div className="size-20 rounded-sm border-2 border-dashed border-sun/40 flex items-center justify-center shrink-0">
+            <span className="font-space-mono text-xs text-sun-dark">
+              em breve
+            </span>
+          </div>
+        )}
+      </div>
 
-      <div className="flex-1 min-w-0">
-        <h3 className="font-unbounded text-base tracking-tight text-sun-dark leading-tight">
+      <div className="min-w-0 space-y-2 font-manrope">
+        <h3 className="font-manrope font-semibold text-xl tracking-tight leading-tight lowercase">
           {name}
         </h3>
         {children}
-        {cta && href && (
-          <Link
+      </div>
+      {status !== null &&
+        (cta && href ? (
+          <Button
+            variant="primary"
             href={href}
-            className="font-space-mono lowercase text-xs mt-2 inline-block text-code hover:text-code-dark transition-colors"
+            className="self-start w-fit text-sm mt-2"
           >
-            {cta} →
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function Accordion({ numero, nome, explainer, children }) {
-  const [open, setOpen] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const hasContent = Boolean(children);
-
-  return (
-    <div className="">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={`relative w-full bg-sun-light flex items-start gap-4 px-6 pt-5 cursor-pointer text-left overflow-hidden transition-[max-height] duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${open ? "max-h-56 pb-6" : "max-h-[3.75rem]"}`}
-        aria-expanded={open}
-      >
-        <div
-          className={`absolute inset-0 bg-[url('/bg-texture-cutting-pad.svg')] bg-cover pointer-events-none transition-opacity duration-300 ${hovered && !open ? "opacity-100" : "opacity-0"}`}
-        />
-        <span className="relative font-space-mono text-xs text-(--sun) shrink-0 w-6 mt-1">
-          {numero}
-        </span>
-
-        <div className="relative flex-1 flex flex-col">
-          <h2 className="font-unbounded text-3xl md:text-4xl lg:text-5xl tracking-tight text-sun-dark leading-none">
-            {nome}
-          </h2>
-          <p className="font-manrope text-sm text-sun-dark mt-2 leading-snug">
-            {explainer}
-          </p>
-        </div>
-
-        <span
-          className={`relative font-space-mono text-sun-dark text-xl shrink-0 transition-transform duration-300 mt-0.5 ${open ? "rotate-45" : ""}`}
-        >
-          +
-        </span>
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"}`}
-      >
-        <div className="border-t border-(--sun)/40">
-          {hasContent ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 divide-y divide-x divide-(--sun)/40">
-              {children}
-            </div>
-          ) : (
-            <p className="font-space-mono text-sm text-sun-dark lowercase py-4 px-6">
-              realizações a caminho
-            </p>
-          )}
-        </div>
-      </div>
+            {cta}
+          </Button>
+        ) : (
+          <div aria-hidden="true">
+            <Button
+              variant="primary"
+              disabled
+              className="self-start w-fit invisible text-sm mt-2"
+            >
+              placeholder
+            </Button>
+          </div>
+        ))}
     </div>
   );
 }
@@ -133,103 +98,236 @@ export default function RealizacoesClient() {
           links amarelos
         </h1>
         <p className="font-manrope text-xl text-sun-lighter max-w-lg leading-relaxed">
-          Os links amarelos são a semente. As realizações são tudo que nasce a
-          partir dessa semente.
+          Os links são só a semente, as realizações são os frutos.
         </p>
       </section>
 
       {/* Accordions */}
-      <section className="bg-sun-light border-x border-(--sun)">
+      <section className="bg-sun-light border-x border-sun divide-y divide-sun">
         <Accordion
           numero="01"
           nome="Profundo e Otimista"
-          explainer="Conteúdo escrito com calma e profundidade, otimista sobre a vida e sobre o seu span de atenção."
+          explainer="Conteúdo escrito com calma e profundidade, otimista sobre a vida e sobre o seu span de atenção"
         >
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y divide-x divide-sun">
           <RealizacaoCard
             status="ativa"
             name="Links Amarelos"
             cover="/brand/links-amarelos-3.png"
-            cta="Assinar"
+            cta="leia no Substack"
             href="https://amarelodandara.substack.com"
           >
-            <p className="">
-              A curadoria mensal dos creme de la creme da internet. Artigos,
-              vídeos, músicas, imagens, ferramentas e buracos negros digitais —
-              curados à mão.
+            <p>
+              Uma curadoria mensal do{" "}
+              <span className="italic">creme de la creme</span> da internet,
+              todo mês na sua caixa de entrada.{" "}
             </p>
           </RealizacaoCard>
           <RealizacaoCard
             status="ativa"
             name="Ondas Amarelas"
             cover="/brand/ondas-amarelas-6.png"
-            cta="Ouvir"
+            cta="ouça no Spotify"
             href="https://open.spotify.com/show/043Gs7eyY2KOlotEWSTSxB?si=e7abf2b9730747d7"
           >
-            <p className="font-manrope text-sm text-sun-dark leading-relaxed mt-1">
-              A versão em áudio expandida dos links amarelos. O mesmo conteúdo,
-              mas com um tempero a mais que pode morar no rádio do seu carro ou
-              no seu fone de ouvido.
+            <p>
+              A versão expandida dos links amarelos em áudio. O mesmo conteúdo,
+              mas com um tempero a mais, todo mês no seu ouvidor de áudio.
             </p>
           </RealizacaoCard>
           <RealizacaoCard
             status="construindo"
             name="Hyperlinks Amarelos"
             cover="/brand/coming-newsletter.png"
-            cta="Ouvir"
-            href={null}
+            cta="Assine para receber"
+            href="https://amarelodandara.substack.com"
           >
-            <p className="font-manrope text-sm text-sun-dark leading-relaxed mt-1">
+            <p>
               Ensaios sobre assuntos específicos formados por muitos links
               amarelos demais para caber em uma issue ou outra.
             </p>
           </RealizacaoCard>
+
+          <RealizacaoCard status={null} name="código-fonte">
+            <p>
+              Abrindo as portas de como tudo funciona: como nasce uma issue dos
+              links amarelos? Como eu organizo minhas anotações? Como esse site
+              para em pé?
+            </p>
+            <table className="w-full mt-4 text-sm text-brand-black lowercase">
+              <thead>
+                <tr>
+                  <th className="text-left border-b border-sun/40 pr-4 pb-1">
+                    requisitos
+                  </th>
+                  <th className="text-left font-semibold border-b border-sun/40 pb-1 invisible">
+                    status
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-sun">
+                <tr>
+                  <td className="pr-4 py-1">câmera</td>
+                  <td className="py-1 text-right font-space-mono">não temos</td>
+                </tr>
+                <tr>
+                  <td className="pr-4 py-1">canal no YouTube</td>
+                  <td className="py-1 text-right font-space-mono">não temos</td>
+                </tr>
+              </tbody>
+            </table>
+          </RealizacaoCard>
+        </div>
         </Accordion>
 
         <Accordion
           numero="02"
           nome="Presente e Multimídia"
-          explainer="Formatos que vão além do texto e realizações que vão além da internet."
+          explainer="Formatos que vão além do texto e realizações que vão além da internet"
         >
-          <RealizacaoCard status="planejada" name="Hyperlinks Amarelos">
-            <p className="font-manrope text-sm text-sun-dark leading-relaxed mt-1">
-              Quando um link extrapola os limites de uma newsletter, ele ganha
-              um espaço dedicado em forma de ensaio por áudio.
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y divide-x divide-sun">
+          <RealizacaoCard
+            status="ativa"
+            name="linksamarelos.com"
+            href="https://linksamarelos.com"
+            cta="Você está aqui!"
+            cover={"/icon.svg"}
+          >
+            <p>
+              Os melhores links da internet tem uma casa. Muito mais que um
+              arquivo das edições, a porta de entrada para a internet como uma
+              cidade.
             </p>
           </RealizacaoCard>
+
+          <RealizacaoCard status={null} name="Exposição Amarela">
+            <p>
+              E se a curadoria extrapolasse os limites das telas? E se as telas
+              fossem grandes, físicas, táteis? E se a comunidade amarela
+              escondesse vários artistas?
+            </p>
+          </RealizacaoCard>
+
+          <RealizacaoCard
+            status={null}
+            name="encontro em que a gente lê coisas"
+          >
+            <p>
+              Coloque sua melhor roupa, pegue seus melhores links. Hoje vamos
+              compartilhar as coisas que mais nos fizeram pensar na internet e
+              conversar como se tudo dependesse disso - porque depende.
+            </p>
+            <p className="text-sm ml-4 pl-4 border-l border-sun text-sun-dark mt-6">
+              Inspirado por{" "}
+              <Link
+                href="https://mwichary.medium.com/party-where-we-read-things-c503c3ec624c"
+                className="underline underline-offset-2"
+              >
+                Party Where We Read Things
+              </Link>{" "}
+              do Marchin Wichary
+            </p>
+          </RealizacaoCard>
+
+          <RealizacaoCard
+            status={null}
+            name="bar em que a gente aprende coisas"
+          >
+            <p>
+              Hear me out: a gente fecha um bar, convida um especialista pra
+              palestrar pra gente e bebe e aprende a noite inteira. Não é a
+              noite ideal de muita gente, mas é a nossa.
+            </p>
+            <p className="text-sm ml-4 pl-4 border-l border-sun text-sun-dark mt-6">
+              Inspirado por Sip and Learn
+            </p>
+          </RealizacaoCard>
+        </div>
         </Accordion>
 
         <Accordion
           numero="03"
           nome="Auto-sustentável e Expansivo"
-          explainer="Projetos que se financiam e crescem com a comunidade que os sustenta."
+          explainer="A liberdade da imprensa só existe pra quem é dono de uma."
         >
-          <RealizacaoCard status="planejada" name="Arquivo Amarelo">
-            <p className="font-manrope text-sm text-sun-dark leading-relaxed mt-1">
-              Todo link já compartilhado em Links Amarelos, organizado,
-              pesquisável e anotado. Um acervo vivo de descobertas.
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y divide-x divide-sun">
+          <RealizacaoCard status={null} name="Auto hospedagem">
+            <p>
+              Que os links amarelos vivam em sua própria casa, sem depender da
+              estabilidade de plataformas de entretenimento. Que vivam pra
+              sempre. Que para todos.
             </p>
           </RealizacaoCard>
+          <RealizacaoCard status={null} name="Paint The Town Yellow!">
+            <p>
+              Que as recomendações da cidade, vivam na cidade. Pequenas ações e
+              intervenções em cada lugar já recomendados nos links amarelos e
+              nas ondas amarelas. Nos encontre por aí!
+            </p>
+          </RealizacaoCard>
+        </div>
         </Accordion>
 
         <Accordion
           numero="04"
           nome="Apoiado e Apoiador"
-          explainer="Uma rede de apoio mútuo entre criadores e leitores."
-        />
+          explainer="Iniciativas realizadas e celebrados lado a lado com vocês."
+        >
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y divide-x divide-sun">
+          <RealizacaoCard status={"construindo"} name="Sólzinhos">
+            <p>
+              Uma pequena palavra de agradecimento e encorajamento para todos os
+              criadores já recomendados por aqui. As vezes, é tudo que alguém
+              precisa para continuar criando.
+            </p>
+          </RealizacaoCard>
+
+          <RealizacaoCard status={null} name="Painel de Apoiadores">
+            <p>
+              Todos que fazem os links respirarem com leveza merecem ser
+              lembrados.
+            </p>
+          </RealizacaoCard>
+
+          <RealizacaoCard status={null} name="Urna de Temas">
+            <p>
+              Sugira temas para serem explorados ou aprofundados, vote nos temas
+              já sugeridos. Exerça seu direito de cidadão amarelo!
+            </p>
+          </RealizacaoCard>
+
+          <RealizacaoCard status={null} name="Arco-links">
+            <p>
+              Uma conversa minha com outro criador de links em que conversamos
+              sobre os links que mais lhe impactaram e o que mais ele vê de
+              amarelo na vida.
+            </p>
+            <p className="text-sm ml-4 pl-4 border-l border-sun text-sun-dark mt-6">
+              Inspirado pelo quadro de entrevista do Derrick Gee,{" "}
+              <Link
+                href="https://www.youtube.com/playlist?list=PLArYIy4cER9uLERZnNR8MkCh0lTTV6mhw"
+                className="underline underline-offset-2"
+              >
+                play songs at my house
+              </Link>
+            </p>
+          </RealizacaoCard>
+        </div>
+        </Accordion>
       </section>
 
       {/* Support CTA */}
-      <section className="px-8 py-16 space-y-4 text-center">
-        <p className="font-manrope text-xl font-semibold text-sun-lighter tracking-tight">
-          Essas realizações vivem do seu apoio.
+      <section className="px-8 py-16 space-y-4 text-center bg-[url('/bg-texture-white.svg')] bg-repeat">
+        <p className="font-manrope text-xl font-semibold tracking-tight">
+          Essas realizações vivem do apoio de pessoas como você
         </p>
-        <p className="font-manrope text-sun-light text-sm">
+        <p className="font-manrope text-center w-3/5 mx-auto leading-relaxed">
           Cada assinante pago ajuda a manter o conteúdo principal gratuito e a
           financiar novos projetos.
         </p>
         <div className="pt-4">
-          <Button variant="primary" href="/apoio" className="text-sm">
-            ver planos de apoio
+          <Button variant="primary" href="/apoio" className="text-sm" trail>
+            apoiar
           </Button>
         </div>
       </section>

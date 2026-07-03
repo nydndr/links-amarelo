@@ -83,7 +83,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <nav className="relative border-b border-(--sun) py-3 px-6 flex justify-between items-center">
-          <Link href="/" className="text-(--sun)">
+          <Link href="/" className="text-sun">
             <LogoOdometer />
           </Link>
 
@@ -111,21 +111,21 @@ export default function RootLayout({ children }) {
           {children}
         </div>
 
-        <footer className="border-t border-(--sun) bg-[url('/bg-texture.svg')] bg-repeat">
+        <footer className="border-t border-sun bg-[url('/bg-texture.svg')] bg-repeat">
           <div className="max-w-4xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Brand */}
             <div className="space-y-3">
-              <p className="font-unbounded text-sm text-(--sun-dark) tracking-tight">
-                links amarelos
-              </p>
+              <div className="text-sun w-fit">
+                <LogoOdometer />
+              </div>
               <p className="font-manrope text-sm leading-relaxed">
-                Curadoria de links que valem o seu temp, hoje e sempre.
+                Curadoria de links que valem o seu tempo, hoje e sempre.
               </p>
             </div>
 
             {/* Pages */}
             <div className="space-y-3">
-              <p className="font-space-mono text-xs uppercase tracking-widest">
+              <p className="font-space-mono text-xs text-(--sun-dark) uppercase tracking-widest">
                 Páginas
               </p>
               <nav className="flex flex-col gap-2">
@@ -147,33 +147,29 @@ export default function RootLayout({ children }) {
 
             {/* Socials */}
             <div className="space-y-3">
-              <p className="font-space-mono text-xsuppercase tracking-widest">
+              <p className="font-space-mono text-xs text-(--sun-dark) uppercase tracking-widest">
                 Leia e ouça
               </p>
-              <div className="flex flex-col gap-2">
-                <Link
+              <div className="flex flex-col gap-2 items-start">
+                <ExternalLinkPill
+                  platform="substack"
                   href="https://amarelodandara.substack.com"
-                  className="font-manrope text-sm  transition-colors lowercase"
-                >
-                  Newsletter no Substack →
-                </Link>
-                <Link
+                />
+                <ExternalLinkPill
+                  platform="spotify"
                   href="https://open.spotify.com/show/043Gs7eyY2KOlotEWSTSxB?si=e7abf2b9730747d7"
-                  className="font-manrope text-sm  transition-colors lowercase"
-                >
-                  Ondas Amarelas no Spotify →
-                </Link>
+                />
               </div>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div className="border-t border-(--sun)/30 px-6 py-4 max-w-4xl mx-auto flex justify-between items-center">
-            <p className="font-space-mono text-xs text-stone-400 lowercase">
-              © {new Date().getFullYear()} links amarelos
+            <p className="font-space-mono text-xs text-brand-black/50 lowercase">
+              © {new Date().getFullYear()} amarelo dandara
             </p>
-            <p className="font-space-mono text-xs text-stone-400 lowercase">
-              feito com cuidado
+            <p className="font-space-mono text-xs text-brand-black/50 lowercase">
+              feito por completo
             </p>
           </div>
         </footer>

@@ -8,7 +8,7 @@ const ITEMS = [
   },
   {
     key: "livros",
-    href: "https://www.amazon.com.br/que-comi-ano-outras-reflex%C3%B5es/dp/8551013416",
+    href: "https://www.goodreads.com/book/show/207298822-what-i-ate-in-one-year",
   },
   {
     key: "documentários",

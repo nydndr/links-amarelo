@@ -15,12 +15,11 @@ const TONES = {
   dark: "bg-white/10 border-white/50 text-white text-sm font-semibold tracking-wide",
 };
 
+export const PILL_BASE =
+  "lowercase rounded-full text-xs font-space-mono px-2 py-0.5 border w-fit";
+
 export default function SectionPill({ children, tone = "light", className = "" }) {
   return (
-    <p
-      className={`lowercase rounded-full text-xs font-space-mono px-2 py-0.5 border w-fit ${TONES[tone]} ${className}`}
-    >
-      {children}
-    </p>
+    <p className={`${PILL_BASE} ${TONES[tone]} ${className}`}>{children}</p>
   );
 }

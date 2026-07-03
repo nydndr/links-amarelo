@@ -1,30 +1,51 @@
 import Button from "./Button";
 
+function TimelineContent({ item }) {
+  const isInternal = item.href?.startsWith("/");
+  return (
+    <div className="space-y-1.5 min-w-0">
+      <p className="font-space-mono text-xs text-brand-black/50">{item.ano}</p>
+      <p className="font-manrope font-semibold text-brand-black leading-snug">
+        {item.titulo}
+      </p>
+      <p className="font-manrope text-sm text-brand-black/70 leading-relaxed">
+        {item.desc}
+      </p>
+      {item.href && (
+        <Button
+          variant={isInternal ? "primary" : "ghost"}
+          href={item.href}
+          className="text-xs mt-2"
+        >
+          {item.cta}
+        </Button>
+      )}
+    </div>
+  );
+}
+
 export default function Timeline({ items }) {
   return (
-    <div className="relative">
-      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-brand-black/15" />
-      <div className="space-y-8">
-        {items.map((item) => (
-          <div key={item.ano} className="flex gap-4">
-            <div className="mt-1.5 size-3.5 rounded-full border-2 border-brand-black/30 bg-sun-light shrink-0 z-10" />
-            <div className="space-y-1.5 pb-1">
-              <p className="font-space-mono text-xs text-brand-black/50">{item.ano}</p>
-              <p className="font-manrope font-semibold text-brand-black leading-snug">
-                {item.titulo}
-              </p>
-              <p className="font-manrope text-sm text-brand-black/70 leading-relaxed">
-                {item.desc}
-              </p>
-              {item.href && (
-                <Button variant="ghost" href={item.href} className="text-xs mt-1">
-                  {item.cta}
-                </Button>
-              )}
+    <div className="relative flex justify-start">
+      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-sun-light" />
+      {items.map((item, i) => {
+        const above = i % 2 === 1;
+        return (
+          <div key={item.ano} className="relative flex flex-col">
+            <div
+              className={`min-h-36 flex items-end pb-10 ${above ? "" : "invisible"}`}
+            >
+              {above && <TimelineContent item={item} />}
+            </div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 size-3 rounded-full bg-sun-lighter  z-10" />
+            <div
+              className={`min-h-36 flex items-start pt-10 ${above ? "invisible" : ""}`}
+            >
+              {!above && <TimelineContent item={item} />}
             </div>
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }

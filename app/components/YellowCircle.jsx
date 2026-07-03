@@ -66,8 +66,7 @@ export default function YellowCircle({ filled = false, className = "" }) {
           const t = row / totalRows;
           const curveOffset =
             Math.round(
-              (Math.sin(t * Math.PI * 2 * TRAIL_CURVE_FREQ) *
-                TRAIL_CURVE_AMP) /
+              (Math.sin(t * Math.PI * 2 * TRAIL_CURVE_FREQ) * TRAIL_CURVE_AMP) /
                 TRAIL_PIXEL_SIZE,
             ) * TRAIL_PIXEL_SIZE;
           ctx.fillRect(
@@ -80,14 +79,15 @@ export default function YellowCircle({ filled = false, className = "" }) {
       }
       ctx.restore();
 
-      ctx.strokeStyle = "rgba(180,140,0,0.5)";
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 3]);
       ctx.beginPath();
-      ctx.arc(W / 2, H / 2, r - 1, 0, Math.PI * 2);
+      ctx.arc(W / 2, H / 2, r - 0.5, 0, Math.PI * 2);
       ctx.stroke();
+      ctx.setLineDash([]);
 
-      const tailClear =
-        head - (TRAIL_OPACITY / TRAIL_FADE) * TRAIL_PIXEL_SIZE;
+      const tailClear = head - (TRAIL_OPACITY / TRAIL_FADE) * TRAIL_PIXEL_SIZE;
       if (tailClear > W) {
         timeoutId = setTimeout(restart, TRAIL_PAUSE_MS);
         return;
@@ -105,7 +105,11 @@ export default function YellowCircle({ filled = false, className = "" }) {
   }, [filled]);
 
   if (!filled) {
-    return <div className={`rounded-full border-2 border-sun ${className}`} />;
+    return (
+      <div
+        className={`rounded-full border border-dashed border-sun-dark ${className}`}
+      />
+    );
   }
 
   return <canvas ref={canvasRef} className={`rounded-full ${className}`} />;

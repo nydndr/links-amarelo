@@ -11,8 +11,8 @@ export default function FloatingLink({ title, url }) {
   const wrapRef = useRef(null);
   const posRef = useRef(null);
   const velRef = useRef({ x: 0, y: 0 });
-  const targetRef = useRef(null);   // null = idle; { x, y } = follow
-  const originRef = useRef(null);   // saved pos on cursor enter
+  const targetRef = useRef(null); // null = idle; { x, y } = follow
+  const originRef = useRef(null); // saved pos on cursor enter
   const returnTimerRef = useRef(null);
   const rafRef = useRef(null);
   const t0Ref = useRef(null);
@@ -71,7 +71,10 @@ export default function FloatingLink({ title, url }) {
     section.addEventListener("mouseleave", onLeave);
 
     const animate = (now) => {
-      if (!posRef.current) { rafRef.current = requestAnimationFrame(animate); return; }
+      if (!posRef.current) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
       const elapsed = now - (t0Ref.current ?? now);
       const { width: w, height: h } = section.getBoundingClientRect();
 
@@ -138,11 +141,24 @@ export default function FloatingLink({ title, url }) {
                   {title}
                 </span>
                 <button
-                  onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
+                  onClick={() =>
+                    window.open(
+                      url,
+                      "https://pt.wikipedia.org/wiki/Gesamtkunstwerk",
+                      "noopener,noreferrer",
+                    )
+                  }
                   className="text-sun-dark hover:text-code transition-colors duration-150"
                   title="Abrir link"
                 >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                     <polyline points="15 3 21 3 21 9" />
                     <line x1="10" y1="14" x2="21" y2="3" />

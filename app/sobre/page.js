@@ -1,10 +1,9 @@
 import LinksLogotype from "../components/icons/LinksLogotype";
-import OndasLogotype from "../components/icons/OndasLogotype";
-import HyperlinksLogo from "../components/icons/HyperlinksLogo";
 import Timeline from "../components/Timeline";
 import TypingCycler from "../components/TypingCycler";
 import Button from "../components/Button";
 import SectionPill from "../components/SectionPill";
+import Accordion from "../components/Accordion";
 
 export const metadata = {
   title: "sobre",
@@ -24,114 +23,108 @@ export const metadata = {
 const timeline = [
   {
     ano: "setembro de 2025",
-    titulo: "links amarelos #1 é enviado",
-    desc: "Após muitos pedidos, amarelo dandara finalmente dá ouvido aos seus amigos e envia a primeira coleção dos melhores links que encontrou no mês.",
+    titulo: "links amarelos #1",
+    desc: "Vai ao ar a primeira coleção dos melhores links do mês.",
     href: "https://amarelodandara.substack.com/links-amarelos-1",
     cta: "leia no Substack",
   },
   {
     ano: "janeiro de 2026",
-    titulo: "a estreia das ondas amarelas",
-    desc: "Os links amarelos ganham voz! O podcast nasce como uma extensão natural da newsletter - mesmos temas, outro formato.",
+    titulo: "ondas amarelas",
+    desc: "Os links amarelos ganham voz!",
     href: "https://amarelodandara.substack.com",
     cta: "Ouça no Spotify",
-  },
-  {
-    ano: "maio de 2026",
-    titulo: "começa a comunidade",
-    desc: "Os links amarelos se abre para doações e inscrições, com recompensas para quem contribui.",
   },
   {
     ano: "junho de 2026",
     titulo: "linksamarelos.com vai ao ar",
     desc: "Sejam bem vindos ao CEP dos linksamarelos na internet.",
   },
+  {
+    ano: "em breve",
+    titulo: "muito mais",
+    desc: "Novas realizações amarela estão a caminho",
+    href: "/realizacoes",
+    cta: "ver realizações",
+  },
 ];
 
 export default function SobrePage() {
   return (
-    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
+    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto border border-sun divide-y divide-sun">
       {/* Header */}
-      <section className="border-b border-sun-light px-8 py-16 space-y-6">
+      <section className="space-y-6 px-8 py-16">
         <SectionPill>sobre</SectionPill>
-        <h1>
-          <LinksLogotype
-            role="img"
-            aria-label="Links Amarelos"
-            className="h-10 md:h-14 w-auto text-brand-white"
-          />
+
+        <h1 className="font-unbounded text-4xl md:text-6xl text-sun-lighter tracking-tight leading-tight">
+          links amarelos<br></br>e muito mais
         </h1>
-        <p className="font-manrope text-xl text-sun-lighter max-w-lg leading-relaxed">
-          Uma curadoria mensal pra te tirar dos sites virais e te levar às
-          vizinhanças que você nunca visitou na internet.
+        <p className="font-manrope text-xl text-sun-lighter max-w-xl leading-relaxed">
+          Curadorias que te levam aos lugares lindos que a internet ainda tem
+          pra oferecer e você se esqueceu.
         </p>
       </section>
 
       {/* O que é */}
-      <section className="grid md:grid-cols-2">
-        {/* Left: produtos */}
-        <div className="divide-y divide-sun-light grid grid-rows-3">
-          <div className="p-8 space-y-3">
-            <LinksLogotype
-              role="img"
-              aria-label="Links Amarelos"
-              className="h-4 w-auto text-sun-lighter"
-            />
-            <p className="font-manrope text-sun-lighter leading-relaxed">
-              Uma newsletter mensal que reúne o melhor que uma designer
-              altamente técnica, careca, negra e personality hire encontrou por
-              aí.
-            </p>
-          </div>
+      <section className="bg-sun-light divide-y divide-sun">
+        <Accordion
+          numero="01"
+          nome="Links Amarelos"
+          explainer="A curadoria mensal que começou tudo, direto na sua caixa de entrada"
+        >
+          <p className="font-manrope leading-relaxed p-6">
+            Uma newsletter mensal que reúne o melhor que uma designer altamente
+            técnica, careca, negra e personality hire encontrou por aí.
+          </p>
+        </Accordion>
 
-          <div className="p-8 space-y-3">
-            <OndasLogotype
-              role="img"
-              aria-label="Ondas Amarelas"
-              className="h-4 w-auto text-sun-lighter"
-            />
-            <p className="font-manrope text-sun-lighter leading-relaxed">
-              O que acontece quando os links amarelos ganham voz! Uma versão
-              expandida da conversa também lançada mensalmente no seu ouvidor de
-              áudio favorito.
-            </p>
-          </div>
+        <Accordion
+          numero="02"
+          nome="Ondas Amarelas"
+          explainer="Quando os links amarelos ganham voz, todo mês no seu ouvidor de áudio favorito"
+        >
+          <p className="font-manrope leading-relaxed p-6">
+            O que acontece quando os links amarelos ganham voz! Uma versão
+            expandida da conversa também lançada mensalmente no seu ouvidor de
+            áudio favorito.
+          </p>
+        </Accordion>
 
-          <div className="p-8 space-y-3 bg-purple-500">
-            <HyperlinksLogo
-              role="img"
-              aria-label="Hyperlinks Amarelos"
-              className="h-4 w-auto text-white"
-            />
-            <p className="font-manrope text-white leading-relaxed">
-              Quando um link extrapola os limites de uma newsletter e não
-              consegue conviver com outras recomendações em um podcast de meia
-              hora, ele ganha um espaço dedicado em forma de ensaio por áudio.
-            </p>
-          </div>
-        </div>
+        <Accordion
+          numero="03"
+          nome="Hyperlinks Amarelos"
+          explainer="Quando um link é grande demais pra caber em uma edição ou episódio"
+        >
+          <p className="font-manrope leading-relaxed p-6">
+            Quando um link extrapola os limites de uma newsletter e não consegue
+            conviver com outras recomendações em um podcast de meia hora, ele
+            ganha um espaço dedicado em forma de ensaio por áudio.
+          </p>
+        </Accordion>
+      </section>
 
-        {/* Right: timeline */}
-        <div className="p-8 space-y-6 bg-sun-light border-r border-(--sun)">
-          <p className="uppercase text-sm text-(--sun) px-4 py-2 font-unbounded">
+      {/* Timeline */}
+      <section>
+        <div className="border-b border-sun-light pt-16">
+          <p className="uppercase text-sun-lighter font-unbounded px-8 pb-2">
             Como chegamos aqui
           </p>
+        </div>
+        <div className="px-8 py-12">
           <Timeline items={timeline} />
         </div>
       </section>
 
       {/* Manifesto */}
-      <section id="manifesto" className="border-b border-sun-light">
+      <section id="manifesto" className="bg-sun-light">
         <div className="px-8 py-16 space-y-10">
-          <SectionPill>manifesto</SectionPill>
-
-          <div className="font-manrope text-lg w-3/4 space-y-10">
+          <div className="font-manrope text-sm w-3/4 space-y-10">
             {/* Intro */}
             <div className="space-y-5">
               <p>
                 Links podem começar com qualquer coisa, mas acho que esquecemos
                 disso. Hoje em dia todos os links começam com{" "}
-                <span className="font-space-mono bg-sun-light px-1">
+                <span className="font-space-mono bg-sun px-1">
                   https://
                   <TypingCycler />
                 </span>
@@ -260,38 +253,53 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Quem faz */}
-      <section className="border-b border-sun-light px-8 py-12 space-y-4">
-        <p className="uppercase text-xs text-sun-light font-unbounded tracking-widest">
-          Quem faz
-        </p>
-        <p className="font-manrope text-sun-lighter leading-relaxed max-w-prose">
-          Amarelo dandara. Escritor, curioso profissional e colecionador de
-          links desde antes de isso ter nome.
-        </p>
-        <p className="font-manrope text-sun-lighter leading-relaxed max-w-prose">
-          Links Amarelos nasceu da vontade de compartilhar o que vale a pena na
-          internet — sem algoritmo, sem anúncio, sem pressa.
-        </p>
-      </section>
+      {/* Quem faz + CTA */}
+      <section>
+        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-sun-light">
+          <div>
+            <div className="border-b border-sun-light pt-16">
+              <p className="uppercase text-sun-lighter font-unbounded px-8 pb-2">
+                Quem faz
+              </p>
+            </div>
+            <div className="px-8 py-12 space-y-4 font-manrope">
+              <p className="text-xl font-semibold tracking-tight leading-relaxed">
+                {" "}
+                Amarelo Dandara é, para os próximos, Nicoly Dandara.
+              </p>
 
-      {/* CTA */}
-      <section className="px-8 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="space-y-1">
-          <p className="font-manrope text-xl font-semibold text-sun-lighter tracking-tight">
-            Pronto para começar?
-          </p>
-          <p className="font-manrope text-sun-light text-sm">
-            Assine grátis ou apoie o projeto.
-          </p>
-        </div>
-        <div className="flex gap-3 flex-wrap">
-          <Button variant="secondary" href="https://amarelodandara.substack.com">
-            assinar grátis
-          </Button>
-          <Button variant="primary" href="/apoio">
-            apoiar o projeto
-          </Button>
+              <p className="font-manrope leading-relaxed max-w-prose">
+                Há tempos perambula pela internet e retorna com links que fazem
+                todo mundo se perguntar: de onde isso saiu? Com os links
+                amarelos, &ldquo;todo mundo&rdquo; pode passar a significar
+                &ldquo;o mundo todo&rdquo;.
+              </p>
+
+              <div className="flex gap-4">
+                <Button variant="ghost" href="https://instagram.com/nydndr">
+                  instagram
+                </Button>
+                <Button variant="ghost" href="https://adandara.com">
+                  site
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="px-8 py-12 space-y-4 text-center bg-[url('/bg-texture-white.svg')] bg-repeat flex flex-col justify-center items-center">
+            <p className="font-manrope text-xl font-semibold tracking-tight">
+              Pronto para começar?
+            </p>
+            <p className="font-manrope w-4/5 leading-relaxed">
+              Assine grátis pra receber a curadoria todo mês ou apoie o projeto
+              pra patrocinar os próximos passos.
+            </p>
+            <div className="pt-4">
+              <Button variant="primary" href="/apoio" className="text-sm" trail>
+                apoiar o projeto
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
