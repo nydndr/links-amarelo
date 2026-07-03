@@ -12,7 +12,7 @@
 //   (bold, ≥14px). Don't drop the size/weight or it fails again.
 const TONES = {
   light: "bg-black/5 border-brand-black/40 text-brand-black",
-  dark: "bg-white/10 border-white/50 text-white text-sm font-semibold",
+  dark: "bg-white/10 border-white/50 text-white text-sm font-semibold tracking-wide",
 };
 
 export default function SectionPill({ children, tone = "light", className = "" }) {
