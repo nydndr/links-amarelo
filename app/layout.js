@@ -8,6 +8,7 @@ import {
   Redacted,
 } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import AgentationWidget from "./agentation-widget";
 import LogoOdometer from "./components/LogoOdometer";
 import NavDrawer from "./components/NavDrawer";
@@ -175,6 +176,7 @@ export default function RootLayout({ children }) {
         </footer>
 
         <AgentationWidget />
+        <Analytics />
       </body>
     </html>
   );

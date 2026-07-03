@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import AutoTooltips from "./components/AutoTooltips";
 import LogoCarousel from "./components/LogoCarousel";
 import ExperimenteSection from "./components/ExperimenteSection";
@@ -11,7 +12,7 @@ import SectionPill from "./components/SectionPill";
 export default function Home() {
   return (
     <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto border-x border-sun">
-      <section className="grid grid-cols-1 md:grid-cols-5 border-b border-sun-light divide-y md:divide-y-0 md:divide-x divide-sun-light items-end">
+      <section className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-sun-light items-end">
         <div className="p-4 h-80 flex flex-col justify-end col-span-full md:col-span-3 space-y-4">
           <AutoTooltips />
         </div>
@@ -22,7 +23,10 @@ export default function Home() {
           </p>
 
           <div className="text-sun-lighter">
-            <div className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3">
+            <Link
+              href="https://amarelodandara.substack.com/links-amarelos-3"
+              className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
+            >
               <Image
                 src="/brand/links-amarelos-3.png"
                 width={2000}
@@ -41,9 +45,12 @@ export default function Home() {
                   maestros, saltos e seriedade
                 </p>
               </div>
-            </div>
+            </Link>
 
-            <div className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3">
+            <Link
+              href="https://open.spotify.com/episode/56YFLEYZebBCBU9DEOCZlL?si=ceb9096ddfc347c3"
+              className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
+            >
               <Image
                 src="/brand/ondas-amarelas-6.png"
                 width={2000}
@@ -61,7 +68,7 @@ export default function Home() {
                   autorrealização, autocriação
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -75,7 +82,7 @@ export default function Home() {
 
         <section
           id="apoie"
-          className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x divide-sun-light"
+          className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-sun-light "
         >
           <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-[url('/bg-texture-cutting-pad.svg')] bg-cover">
             <SectionPill className="mx-auto">Explore</SectionPill>
@@ -96,33 +103,33 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-code text-white">
-            <SectionPill tone="dark" className="mx-auto !border-sun">
+            <SectionPill tone="dark" className="mx-auto">
               Apoie
             </SectionPill>
 
             <div className="font-manrope text-center mx-auto space-y-4 ">
               <p className="w-2/3 mx-auto text-xl  font-semibold tracking-tigther leading-snug">
-                Junte-se aos canarinhos
+                Junte-se aos canarinhos ou doe expontaneamente
               </p>
 
               <p className="w-4/5 mx-auto">
-                Apoie as iniciativas com planos mensais, anuais e doações
-                expontâneas
+                Mergulhe nos links amarelos com conteúdos exclusivos e patrocine
+                iniciativa para todos
               </p>
             </div>
 
             <Button
               variant="primary-inverted"
               href="/apoio"
-              className="text-sm !border-sun"
+              className="text-sm"
             >
               ver planos
             </Button>
           </div>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 border-y border-sun-light divide-y md:divide-y-0 md:divide-x-2 divide-sun-light">
-          <div className="flex flex-col items-center py-8 md:aspect-square justify-around bg-sun-light border border-sun">
+        <section className="grid grid-cols-1 md:grid-cols-2  divide-y md:divide-y-0 md:divide-x-2 divide-sun-light">
+          <div className="flex flex-col items-center py-8 md:aspect-square justify-around bg-sun-light ">
             <SectionPill className="mx-auto">última edição</SectionPill>
 
             <div className="flex flex-col items-center gap-2">
@@ -180,12 +187,12 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="border-sun-light border-t flex flex-col items-center gap-12 hover:bg-code group py-3">
+              <div className="border-sun-light border-t flex flex-col items-center gap-12 py-3">
                 <Image
                   src="/brand/coming-newsletter.png"
                   width={2000}
                   height={2000}
-                  className="size-36 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light transition-transform duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-1"
+                  className="size-36 aspect-square rotate-6 -my-3 shrink-0 outline outline-2 outline-sun-light"
                   alt="links amarelos #3"
                 />
 
@@ -244,7 +251,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative grid grid-cols-1 md:grid-cols-2 py-20 font-manrope  bg-sun-light overflow-hidden">
+        <section className="relative grid grid-cols-1 md:grid-cols-2 py-20 font-manrope border-t border-sun bg-sun-light overflow-hidden">
           <div className=" px-12 flex flex-col justify-end gap-6">
             {" "}
             <p className="text-xl font-semibold tracking-tight leading-snug">
@@ -304,7 +311,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <FloatingLink title="Link 01" url="https://placeholder.com/01" />
+          <FloatingLink
+            title="a palavra pra quem faz tudo"
+            url="https://en.wikipedia.org/wiki/Gesamtkunstwerk"
+          />
         </section>
       </div>
     </main>

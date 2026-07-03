@@ -86,6 +86,7 @@ export default function ExperimenteSection() {
   const engineRef = useRef(null);
   const trailCmdRef = useRef(null); // 'dismiss' | null
   const isBtnHoveredRef = useRef(false);
+  const isExhaustedRef = useRef(false);
 
   // Physics setup
   useEffect(() => {
@@ -216,6 +217,11 @@ export default function ExperimenteSection() {
         return;
       }
 
+      if (isExhaustedRef.current) {
+        ctx.clearRect(0, 0, W, H);
+        return;
+      }
+
       ctx.clearRect(0, 0, W, H);
 
       head += TRAIL_SPEED;
@@ -264,6 +270,10 @@ export default function ExperimenteSection() {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  useEffect(() => {
+    isExhaustedRef.current = isExhausted;
+  }, [isExhausted]);
 
   // Scroll to apoie on exhaust
   useEffect(() => {
@@ -491,7 +501,7 @@ export default function ExperimenteSection() {
           style={{ opacity: hasInteracted ? 1 : 0 }}
         >
           {isExhausted
-            ? "todos os links foram gerados"
+            ? "se gostou, tem mais, é só inscrever!"
             : `${linksRemaining} link${linksRemaining !== 1 ? "s" : ""} restante${linksRemaining !== 1 ? "s" : ""}`}
         </p>
       </div>

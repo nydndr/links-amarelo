@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const TARGET = new Date("2026-07-04T00:00:00");
+const TARGET = new Date("2026-07-11T00:00:00");
 const H = "1.25em";
 
 function getTimeLeft() {

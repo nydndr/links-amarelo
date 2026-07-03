@@ -141,13 +141,7 @@ export default function FloatingLink({ title, url }) {
                   {title}
                 </span>
                 <button
-                  onClick={() =>
-                    window.open(
-                      url,
-                      "https://pt.wikipedia.org/wiki/Gesamtkunstwerk",
-                      "noopener,noreferrer",
-                    )
-                  }
+                  onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
                   className="text-sun-dark hover:text-code transition-colors duration-150"
                   title="Abrir link"
                 >
