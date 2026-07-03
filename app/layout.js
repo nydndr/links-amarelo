@@ -14,6 +14,7 @@ import NavDrawer from "./components/NavDrawer";
 import ExternalLinkPill from "./components/ExternalLinkPill";
 import Button from "./components/Button";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -175,6 +176,7 @@ export default function RootLayout({ children }) {
         </footer>
 
         <AgentationWidget />
+        <Analytics />
       </body>
     </html>
   );
