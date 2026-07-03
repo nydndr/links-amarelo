@@ -42,6 +42,7 @@ export default function AutoTooltips() {
   const urlTimerRef = useRef(null);
   const displayedUrlRef = useRef("");
   const lastItemIdxRef = useRef(null);
+  const tickRef = useRef(null);
 
   const setUrl = useCallback((url) => {
     displayedUrlRef.current = url;
@@ -91,9 +92,13 @@ export default function AutoTooltips() {
     const delay = idx === null ? BREATH_MS : PAUSE_MS;
     seqTimerRef.current = setTimeout(() => {
       stepRef.current = (stepRef.current + 1) % SEQUENCE.length;
-      tick();
+      tickRef.current();
     }, delay);
   }, [animateTo]);
+
+  useEffect(() => {
+    tickRef.current = tick;
+  }, [tick]);
 
   useEffect(() => {
     tick();
