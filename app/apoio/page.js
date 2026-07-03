@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function ApoioPage() {
   return (
-    <main className="min-h-screen bg-sun border-x-2 border-sun-light w-full md:max-w-4xl md:mx-auto">
+    <main className="min-h-screen bg-sun md:border-x-2 border-sun-light w-full md:max-w-4xl md:mx-auto">
       {/* Header */}
       <section className="space-y-6 px-8 py-16">
         <SectionPill>Apoie</SectionPill>

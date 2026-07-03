@@ -75,22 +75,21 @@ export default function LogoOdometer() {
 
   return (
     <div
-      className="h-5 overflow-hidden cursor-pointer"
-      style={{ minWidth: '160px' }}
+      className="h-4 md:h-5 overflow-hidden cursor-pointer min-w-[120px] md:min-w-[160px]"
       onMouseEnter={handleMouseEnter}
     >
       <div
         style={{
-          transform: `translateY(${-(stripIdx * 1.25)}rem)`,
+          transform: `translateY(${-(stripIdx * 25)}%)`,
           transition: withTransition
             ? `transform ${ANIM_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`
             : 'none',
         }}
       >
-        <div className="h-5 flex items-center"><LinksLogotype className="h-5 w-auto" /></div>
-        <div className="h-5 flex items-center"><OndasLogotype className="h-5 w-auto" /></div>
-        <div className="h-5 flex items-center"><HyperlinksLogo className="h-5 w-auto" /></div>
-        <div className="h-5 flex items-center"><LinksLogotype className="h-5 w-auto" /></div>
+        <div className="h-4 md:h-5 flex items-center"><LinksLogotype className="h-4 md:h-5 w-auto" /></div>
+        <div className="h-4 md:h-5 flex items-center"><OndasLogotype className="h-4 md:h-5 w-auto" /></div>
+        <div className="h-4 md:h-5 flex items-center"><HyperlinksLogo className="h-4 md:h-5 w-auto" /></div>
+        <div className="h-4 md:h-5 flex items-center"><LinksLogotype className="h-4 md:h-5 w-auto" /></div>
       </div>
     </div>
   );

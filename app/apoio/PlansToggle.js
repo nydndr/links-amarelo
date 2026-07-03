@@ -35,14 +35,14 @@ export default function PlansToggle() {
           <ul className="space-y-2 flex-1">
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-brand-black" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 <span className="font-semibold">links amarelos</span> a
                 curadoria mensal que você lê
               </span>
             </li>
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-brand-black" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 <span className="font-semibold">ondas amarelas</span> a
                 curadoria mensal que você ouve
               </span>
@@ -121,28 +121,28 @@ export default function PlansToggle() {
           <ul className="space-y-2 flex-1">
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-code-light" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 <span className="font-semibold">links amarelos</span> a
                 curadoria mensal que você lê
               </span>
             </li>
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-code-light" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 <span className="font-semibold">ondas amarelas</span> a
                 curadoria mensal que você ouve
               </span>
             </li>
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-code-light" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 <span className="font-semibold">hyperlinks amarelos</span>{" "}
                 ensaios profundos de assuntos amarelissímos
               </span>
             </li>
             <li className="flex items-start gap-2">
               <CheckIcon className="size-4 mt-0.5 shrink-0 text-code-light" />
-              <span className="font-manrope">
+              <span className="font-manrope w-4/5">
                 seu nome no painel de apoiadores e no final de todo episódio
               </span>
             </li>

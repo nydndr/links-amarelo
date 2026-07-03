@@ -133,8 +133,8 @@ export default function AutoTooltips() {
         </p>
 
         <p className="font-manrope text-lg">
-          Uma curadoria opionada, profunda e otimista do <br></br>melhor que a
-          internet ainda tem pra oferecer.
+          Uma curadoria opionada, profunda e otimista do melhor que a internet
+          ainda tem pra oferecer.
         </p>
       </div>
       <div className="bg-sun-light flex px-3 py-2 rounded-full text-xs font-space-mono justify-between items-center gap-2">

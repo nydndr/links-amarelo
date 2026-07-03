@@ -31,11 +31,11 @@ export default function Accordion({
           {numero}
         </span>
 
-        <div className="relative flex-1 flex flex-col">
-          <h2 className="font-unbounded text-3xl md:text-4xl lg:text-5xl tracking-tight leading-none text-brand-dark">
+        <div className="relative flex-1 min-w-0 flex flex-col overflow-hidden">
+          <h2 className="font-unbounded text-xl sm:text-2xl md:text-4xl lg:text-5xl tracking-tight leading-none text-brand-dark whitespace-nowrap [mask-image:linear-gradient(to_right,black_75%,transparent_100%)] md:[mask-image:none]">
             {nome}
           </h2>
-          <p className="font-manrope mt-2 leading-snug">{explainer}</p>
+          <p className="font-manrope mt-2 leading-snug hidden md:block">{explainer}</p>
         </div>
 
         <span

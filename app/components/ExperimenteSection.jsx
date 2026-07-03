@@ -49,6 +49,7 @@ const HOLD_MS = 800;
 const CIRCLE_R = 12;
 const SETTLE_SPEED = 0.5;
 const SETTLE_FRAMES = 80;
+const PULSE_PERIOD_MS = 1400;
 
 // ── Pixel trail tuning ───────────────────────────────────────────────────────
 const TRAIL_PIXEL_SIZE = 5; // size of each pixel block (px)
@@ -94,21 +95,35 @@ export default function ExperimenteSection() {
     const canvas = canvasRef.current;
     if (!section || !canvas) return;
 
-    const { width, height } = section.getBoundingClientRect();
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext("2d");
+    const dims = { width: 0, height: 0 };
+    let wallBodies = [];
 
     const engine = Matter.Engine.create({ gravity: { y: 1.2 } });
     engineRef.current = engine;
 
-    const wall = { isStatic: true };
-    Matter.Composite.add(engine.world, [
-      Matter.Bodies.rectangle(width / 2, -25, width, 50, wall),
-      Matter.Bodies.rectangle(width / 2, height + 25, width, 50, wall),
-      Matter.Bodies.rectangle(-25, height / 2, 50, height, wall),
-      Matter.Bodies.rectangle(width + 25, height / 2, 50, height, wall),
-    ]);
+    const rebuildWalls = () => {
+      const { width, height } = section.getBoundingClientRect();
+      dims.width = width;
+      dims.height = height;
+      canvas.width = width;
+      canvas.height = height;
+
+      if (wallBodies.length) Matter.Composite.remove(engine.world, wallBodies);
+      const wall = { isStatic: true };
+      wallBodies = [
+        Matter.Bodies.rectangle(width / 2, -25, width, 50, wall),
+        Matter.Bodies.rectangle(width / 2, height + 25, width, 50, wall),
+        Matter.Bodies.rectangle(-25, height / 2, 50, height, wall),
+        Matter.Bodies.rectangle(width + 25, height / 2, 50, height, wall),
+      ];
+      Matter.Composite.add(engine.world, wallBodies);
+    };
+    rebuildWalls();
+
+    const ctx = canvas.getContext("2d");
+
+    const resizeObserver = new ResizeObserver(rebuildWalls);
+    resizeObserver.observe(section);
 
     const runner = Matter.Runner.create();
     Matter.Runner.run(runner, engine);
@@ -131,6 +146,7 @@ export default function ExperimenteSection() {
             settledFrames: frames,
             sx: c.body.position.x,
             sy: c.body.position.y,
+            settledAt: performance.now(),
           };
         }
         return { ...c, settledFrames: frames };
@@ -153,10 +169,22 @@ export default function ExperimenteSection() {
       }
 
       // Render circles
-      ctx.clearRect(0, 0, width, height);
+      const now = performance.now();
+      ctx.clearRect(0, 0, dims.width, dims.height);
       for (const c of updated) {
         const x = c.settled ? c.sx : c.body.position.x;
         const y = c.settled ? c.sy : c.body.position.y;
+
+        if (c.settled) {
+          // Attention pulse — draws the eye once a link is ready to click
+          const t = ((now - c.settledAt) % PULSE_PERIOD_MS) / PULSE_PERIOD_MS;
+          ctx.beginPath();
+          ctx.arc(x, y, CIRCLE_R + 3 + t * 8, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255,204,0,${0.5 * (1 - t)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
         ctx.beginPath();
         ctx.arc(x, y, CIRCLE_R, 0, Math.PI * 2);
         ctx.fillStyle = "#ffcc00";
@@ -168,6 +196,7 @@ export default function ExperimenteSection() {
     });
 
     return () => {
+      resizeObserver.disconnect();
       Matter.Runner.stop(runner);
       Matter.Engine.clear(engine);
     };
@@ -370,22 +399,33 @@ export default function ExperimenteSection() {
     holdRafRef.current = requestAnimationFrame(decay);
   }, []);
 
-  const handleMouseMove = useCallback((e) => {
+  const findCircleAt = useCallback((clientX, clientY) => {
     const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-    let found = null;
+    if (!rect) return null;
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
     for (const c of settledCirclesRef.current) {
       const dx = mx - c.x;
       const dy = my - c.y;
-      if (Math.sqrt(dx * dx + dy * dy) <= CIRCLE_R) {
-        found = c.id;
-        break;
-      }
+      if (Math.sqrt(dx * dx + dy * dy) <= CIRCLE_R) return c;
     }
-    setHoveredId(found);
+    return null;
   }, []);
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      setHoveredId(findCircleAt(e.clientX, e.clientY)?.id ?? null);
+    },
+    [findCircleAt],
+  );
+
+  const handleClick = useCallback(
+    (e) => {
+      const hit = findCircleAt(e.clientX, e.clientY);
+      if (hit) window.open(hit.url, "_blank", "noopener,noreferrer");
+    },
+    [findCircleAt],
+  );
 
   const scale = 1 + holdProgress * 0.18;
 
@@ -393,9 +433,10 @@ export default function ExperimenteSection() {
     <section
       ref={sectionRef}
       id="experimente"
-      className="relative font-manrope text-center py-20 space-y-12 bg-sun-light bg-[url('/bg-circles.svg')] bg-repeat overflow-hidden"
+      className={`relative font-manrope text-center py-20 space-y-12 border-y border-sun bg-sun-light bg-[url('/bg-circles.svg')] bg-repeat overflow-hidden ${hoveredId !== null ? "cursor-pointer" : ""}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHoveredId(null)}
+      onClick={handleClick}
     >
       {/* Physics canvas — in front of text, behind hover cards */}
       <canvas
@@ -418,14 +459,18 @@ export default function ExperimenteSection() {
               zIndex: 30,
             }}
           >
-            <div className="bg-white border border-sun-light rounded-sm shadow-sm px-3 py-2 flex items-center gap-2">
+            <div
+              className="bg-white border border-sun-light rounded-sm shadow-sm px-3 py-2 flex items-center gap-2 cursor-pointer"
+              onClick={() => window.open(c.url, "_blank", "noopener,noreferrer")}
+            >
               <span className="font-manrope font-semibold text-sm text-stone-900 whitespace-nowrap">
                 {c.title}
               </span>
               <button
-                onClick={() =>
-                  window.open(c.url, "_blank", "noopener,noreferrer")
-                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(c.url, "_blank", "noopener,noreferrer");
+                }}
                 className="text-sun-dark hover:text-code transition-colors duration-150"
                 title="Abrir link"
               >
@@ -449,7 +494,7 @@ export default function ExperimenteSection() {
 
       {/* Text content */}
       <div className="relative space-y-6" style={{ zIndex: 5 }}>
-        <div className="space-y-2">
+        <div className="space-y-2 px-6 md:px-0">
           <p className="font-manrope text-2xl tracking-tight text-balance font-semibold">
             Não tem certeza se essa curadoria é pra você?
           </p>

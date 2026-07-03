@@ -90,7 +90,7 @@ export default function NavDrawer({
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="flex px-6 py-3 font-manrope items-center gap-2 [&:not(:last-child)]:border-b border-(--sun) hover:bg-(--sun) group text-(--sun-dark)"
+              className="flex px-6 py-3 font-manrope items-center gap-2 [&:not(:last-child)]:border-b border-(--sun) hover:bg-(--sun) group text-brand-black md:text-(--sun-dark)"
             >
               <span className="font-semibold lowercase text-lg tracking-tight group-hover:text-white transition-colors">
                 {label}

@@ -88,7 +88,7 @@ function RealizacaoCard({ status, name, cover, cta, href, children }) {
 
 export default function RealizacoesClient() {
   return (
-    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto">
+    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto md:border-x border-sun">
       {/* Header */}
       <section className="border-b border-sun-light px-8 py-16 space-y-6">
         <SectionPill>realizações</SectionPill>
@@ -321,7 +321,7 @@ export default function RealizacoesClient() {
         <p className="font-manrope text-xl font-semibold tracking-tight">
           Essas realizações vivem do apoio de pessoas como você
         </p>
-        <p className="font-manrope text-center w-3/5 mx-auto leading-relaxed">
+        <p className="font-manrope text-center md:w-3/5 mx-auto leading-relaxed">
           Cada assinante pago ajuda a manter o conteúdo principal gratuito e a
           financiar novos projetos.
         </p>

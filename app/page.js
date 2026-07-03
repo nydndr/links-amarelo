@@ -11,21 +11,21 @@ import SectionPill from "./components/SectionPill";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto border-x border-sun">
+    <main className="min-h-screen bg-(--sun) w-full md:max-w-4xl md:mx-auto md:border-x border-sun">
       <section className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-sun-light items-end">
         <div className="p-4 h-80 flex flex-col justify-end col-span-full md:col-span-3 space-y-4">
           <AutoTooltips />
         </div>
 
-        <div className="col-span-full md:col-span-2">
-          <p className="uppercase text-sm text-sun-lighter px-4 py-2 font-unbounded">
+        <div className="col-span-full md:col-span-2 bg-sun-light md:bg-transparent">
+          <p className="uppercase text-sm text-sun px-4 pt-12 md:pt-2 pb-2 font-unbounded">
             Comece por aqui
           </p>
 
-          <div className="text-sun-lighter">
+          <div className="text-brand-black md:text-sun-lighter">
             <Link
               href="https://amarelodandara.substack.com/links-amarelos-3"
-              className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
+              className="border-sun md:border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
             >
               <Image
                 src="/brand/links-amarelos-3.png"
@@ -49,7 +49,7 @@ export default function Home() {
 
             <Link
               href="https://open.spotify.com/episode/56YFLEYZebBCBU9DEOCZlL?si=ceb9096ddfc347c3"
-              className="border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
+              className="border-sun md:border-sun-light border-t flex items-center gap-4 hover:bg-code group py-3"
             >
               <Image
                 src="/brand/ondas-amarelas-6.png"
@@ -84,7 +84,7 @@ export default function Home() {
           id="apoie"
           className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-sun-light "
         >
-          <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-[url('/bg-texture-cutting-pad.svg')] bg-cover">
+          <div className="flex flex-col items-center py-16 aspect-square justify-around bg-[url('/bg-texture-cutting-pad.svg')] bg-cover">
             <SectionPill className="mx-auto">Explore</SectionPill>
 
             <div className="font-manrope text-center mx-auto space-y-4">
@@ -102,7 +102,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="flex flex-col items-center py-16 md:aspect-square justify-around bg-code text-white">
+          <div className="flex flex-col items-center py-16 aspect-square justify-around bg-code text-white">
             <SectionPill tone="dark" className="mx-auto">
               Apoie
             </SectionPill>
@@ -129,7 +129,7 @@ export default function Home() {
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2  divide-y md:divide-y-0 md:divide-x-2 divide-sun-light">
-          <div className="flex flex-col items-center py-8 md:aspect-square justify-around bg-sun-light ">
+          <div className="flex flex-col items-center py-8 aspect-square justify-around bg-sun-light ">
             <SectionPill className="mx-auto">última edição</SectionPill>
 
             <div className="flex flex-col items-center gap-2">
@@ -165,17 +165,17 @@ export default function Home() {
               <ExternalLinkPill
                 platform="substack"
                 href="https://amarelodandara.substack.com"
-                className="hidden md:flex bg-white/20"
+                className="flex bg-white/20"
               />
               <ExternalLinkPill
                 platform="spotify"
                 href="https://open.spotify.com/show/043Gs7eyY2KOlotEWSTSxB?si=e7abf2b9730747d7"
-                className="hidden md:flex bg-white/20"
+                className="flex bg-white/20"
               />
             </div>
           </div>
 
-          <div className="items-center pt-16 md:aspect-square">
+          <div className="items-center pt-16 aspect-square">
             <div className="flex justify-between">
               <p className="uppercase text-sm text-sun-lighter px-4 py-2 font-unbounded">
                 Próximas edições
@@ -221,7 +221,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="flex justify-center items-center gap-6 border-t border-sun-lighter">
+              <div className="flex justify-center items-center gap-6 border-t border-sun-lighter py-6 md:py-4">
                 <div className="flex">
                   <Image
                     src="/brand/coming-newsletter.png"
@@ -251,7 +251,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative grid grid-cols-1 md:grid-cols-2 py-20 font-manrope border-t border-sun bg-sun-light overflow-hidden">
+        <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 py-20 font-manrope border-t border-sun bg-sun-light overflow-hidden">
           <div className=" px-12 flex flex-col justify-end gap-6">
             {" "}
             <p className="text-xl font-semibold tracking-tight leading-snug">

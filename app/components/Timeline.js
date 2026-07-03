@@ -26,22 +26,33 @@ function TimelineContent({ item }) {
 
 export default function Timeline({ items }) {
   return (
-    <div className="relative flex justify-start">
-      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-sun-light" />
+    <div className="relative flex flex-col md:flex-row md:justify-start">
+      {/* Track: vertical on the left on mobile, horizontal through the middle on desktop */}
+      <div className="absolute left-1.5 top-0 bottom-0 w-0.5 md:left-0 md:right-0 md:top-1/2 md:bottom-auto md:w-auto md:h-0.5 bg-sun-light" />
+
       {items.map((item, i) => {
         const above = i % 2 === 1;
         return (
-          <div key={item.ano} className="relative flex flex-col">
-            <div
-              className={`min-h-36 flex items-end pb-10 ${above ? "" : "invisible"}`}
-            >
-              {above && <TimelineContent item={item} />}
+          <div key={item.ano} className="relative flex md:flex-col">
+            {/* Mobile: dot + content in a single vertical row */}
+            <div className="flex md:hidden gap-4 pb-10">
+              <div className="size-3 rounded-full bg-sun-lighter shrink-0 mt-1.5 z-10" />
+              <TimelineContent item={item} />
             </div>
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 size-3 rounded-full bg-sun-lighter  z-10" />
-            <div
-              className={`min-h-36 flex items-start pt-10 ${above ? "invisible" : ""}`}
-            >
-              {!above && <TimelineContent item={item} />}
+
+            {/* Desktop: alternating zig-zag around the horizontal line */}
+            <div className="hidden md:contents">
+              <div
+                className={`min-h-36 flex items-end pb-10 ${above ? "" : "invisible"}`}
+              >
+                {above && <TimelineContent item={item} />}
+              </div>
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 size-3 rounded-full bg-sun-lighter z-10" />
+              <div
+                className={`min-h-36 flex items-start pt-10 ${above ? "invisible" : ""}`}
+              >
+                {!above && <TimelineContent item={item} />}
+              </div>
             </div>
           </div>
         );

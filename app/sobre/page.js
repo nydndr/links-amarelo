@@ -104,9 +104,9 @@ export default function SobrePage() {
       </section>
 
       {/* Timeline */}
-      <section>
-        <div className="border-b border-sun-light pt-16">
-          <p className="uppercase text-sun-lighter font-unbounded px-8 pb-2">
+      <section className="bg-sun-light">
+        <div className="border-b border-sun pt-16">
+          <p className="uppercase text-sun font-unbounded px-8 pb-2">
             Como chegamos aqui
           </p>
         </div>

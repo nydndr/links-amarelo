@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import PixelTrail from "./PixelTrail";
 
 const R = 12;
 const STIFFNESS = 0.1;
@@ -165,7 +166,7 @@ export default function FloatingLink({ title, url }) {
 
           {/* Circle */}
           <div
-            className="absolute pointer-events-auto cursor-pointer"
+            className="absolute pointer-events-auto cursor-pointer overflow-hidden"
             style={{
               left: pos.x,
               top: pos.y,
@@ -180,7 +181,9 @@ export default function FloatingLink({ title, url }) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
-          />
+          >
+            <PixelTrail color="255,255,255" />
+          </div>
         </>
       )}
     </div>
